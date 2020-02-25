@@ -1,10 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import {
-  mapEdgesToNodes,
-  filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture,
-} from '../lib/helpers';
+// import {
+//   mapEdgesToNodes,
+//   filterOutDocsWithoutSlugs,
+//   filterOutDocsPublishedInTheFuture,
+// } from '../lib/helpers';
 // import BlogPostPreviewList from '../components/blog-post-preview-list';
 // import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
@@ -12,14 +12,23 @@ import SEO from '../components/seo';
 import Layout from '../containers/layout';
 
 // import { Link } from 'gatsby';
-import { Container, Grid, Box, Typography, Button } from '@material-ui/core';
+import {
+  Container,
+  Grid,
+  Box,
+  Typography,
+  Button,
+  Link,
+} from '@material-ui/core';
 // import Layout from '../components/layout';
 // import Image from '../components/image';
-import IMG1 from '../images/img1.jpg';
-import IMG2 from '../images/img2.jpg';
-import IMG3 from '../images/img3.jpg';
+// import IMG1 from '../images/img1.jpg';
+// import IMG2 from '../images/img2.jpg';
+// import IMG3 from '../images/img3.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 import theme from '../components/theme';
+// import heroSection from '../../../studio/schemas/objects/heroSection';
+// import featuresSection from '../../../studio/schemas/objects/featuresSection';
 
 const useStyles = makeStyles({
   h2: {
@@ -44,6 +53,9 @@ const useStyles = makeStyles({
     fontSize: '1.2rem',
     letterSpacing: '2px',
     padding: '2px 30px',
+    '&:hover': {
+      textDecoration: 'none',
+    },
   },
   btnPurple: {
     backgroundColor: '#5F5697',
@@ -52,6 +64,14 @@ const useStyles = makeStyles({
       backgroundColor: '#4A4471',
     },
   },
+  simple: {},
+  box1: {
+    padding: 5,
+    bgcolor: '#BCE3D1',
+    borderRadius: '0 50px 50px 50px',
+    textAlign: 'center',
+  },
+  box2: {},
 });
 
 export const query = graphql`
@@ -59,6 +79,12 @@ export const query = graphql`
     allSanityLandingPage {
       edges {
         node {
+          title
+          seo {
+            description
+            author
+            keywords
+          }
           heroSection {
             feature {
               description
@@ -78,33 +104,9 @@ export const query = graphql`
               url
             }
           }
-          seo {
-            description
-            author
-            keywords
-          }
-          solutions {
-            title
-            image {
-              asset {
-                fluid {
-                  src
-                }
-              }
-            }
-          }
-          title
-          statements {
-            title
-            style
-            price
-            cta {
-              url
-              label
-            }
-          }
           featuresSection {
             features {
+              id
               title
               description
               image {
@@ -117,6 +119,32 @@ export const query = graphql`
                 }
               }
             }
+            cta {
+              label
+              url
+            }
+          }
+          solutions {
+            id
+            title
+            description
+            image {
+              asset {
+                fluid {
+                  src
+                }
+              }
+            }
+          }
+          statements {
+            id
+            title
+            style
+            price
+            cta {
+              url
+              label
+            }
           }
         }
       }
@@ -127,6 +155,14 @@ export const query = graphql`
 const IndexPage = props => {
   const { data, errors } = props;
   const classes = useStyles();
+  const {
+    title,
+    seo,
+    heroSection,
+    featuresSection,
+    solutions,
+    statements,
+  } = data.allSanityLandingPage.edges[0].node;
 
   if (errors) {
     return (
@@ -144,8 +180,8 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      <SEO title="Home" />
-      {/* s1 */}
+      <SEO title={title} />
+      {/* hero */}
       <Box mt={8}>
         <Container fixed>
           <Grid container spacing={5}>
@@ -153,214 +189,164 @@ const IndexPage = props => {
               <Box display="flex" alignItems="center" height="100%">
                 <Box>
                   <Typography variant="h1" gutterBottom>
-                    Spend your time on what matters most.
+                    {heroSection.feature.title}
                   </Typography>
                   <Typography variant="body1">
-                    Gain efficiency, velocity and insight within one intuitive
-                    case management solution.
+                    {heroSection.feature.description}
                   </Typography>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    className={classes.btn}
-                  >
-                    LEARN MORE
-                  </Button>
+                  {heroSection.cta && (
+                    <Button
+                      component={Link}
+                      to={heroSection.cta.url}
+                      variant="contained"
+                      color="secondary"
+                      className={classes.btn}
+                    >
+                      {heroSection.cta.label}
+                    </Button>
+                  )}
                 </Box>
               </Box>
             </Grid>
             <Grid item xs={12} lg={6}>
               <img
-                src={IMG1}
-                alt=""
+                src={heroSection.feature.image.asset.fluid.src}
+                alt={heroSection.feature.image.alt}
                 style={{ width: '100%', display: 'inherit' }}
               />
             </Grid>
           </Grid>
         </Container>
       </Box>
-      {/* s2 */}
+      {/* features */}
       <Box py={10} bgcolor="#f6f7fb">
         <Container fixed>
-          <Grid container spacing={5}>
-            <Grid item xs={12} lg={7}>
-              <Box display="flex" alignItems="center" height="100%">
-                <Box>
-                  <Typography variant="h2">Advanced Case</Typography>
-                  <Typography variant="h2" className={classes.h2}>
-                    Automation and Workflow
-                  </Typography>
-                  <Typography variant="body1" style={{ maxWidth: 400 }}>
-                    Gain complete control over tasks, calendaring,
-                    communications and processes with the most comprehensive
-                    workflow capabilities in the industry.
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12} lg={5}>
-              <img src={IMG2} alt="" style={{ width: '100%' }} />
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-      {/* s3 */}
-      <Box py={10} bgcolor="#f6f7fb">
-        <Container fixed>
-          <Grid container spacing={5}>
-            <Grid item xs={12} lg={5}>
-              <img src={IMG2} alt="" style={{ width: '100%' }} />
-            </Grid>
-            <Grid item xs={12} lg={7}>
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                height="100%"
+          {featuresSection.features.map((feature, index) => (
+            <Box key={feature.id} mt={index > 0 ? 10 : 0}>
+              <Grid
+                container
+                spacing={10}
+                justify="space-between"
+                direction={index % 2 === 0 ? 'row' : 'row-reverse'}
               >
-                <Box>
-                  <Typography variant="h2">Limitless Analytics</Typography>
-                  <Typography variant="h2" className={classes.h2}>
-                    &amp; Intelligence
-                  </Typography>
-                  <Typography variant="body1" style={{ maxWidth: 400 }}>
-                    Access real-time insights to understand case profitability,
-                    leverage drag and drop tiles to build custom dashboards, set
-                    report subscriptions and have all you need and more.
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid>
-          </Grid>
+                <Grid item xs={12} lg={5}>
+                  <Box display="flex" alignItems="center" height="100%">
+                    <Box>
+                      <Typography variant="h2" className={classes.h2}>
+                        {feature.title}
+                      </Typography>
+                      <Typography variant="body1" style={{ maxWidth: 400 }}>
+                        {feature.description}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} lg={5}>
+                  <img
+                    src={feature.image.asset.fluid.src}
+                    alt={feature.image.alt}
+                    style={{ width: '100%' }}
+                  />
+                </Grid>
+              </Grid>
+            </Box>
+          ))}
+          {featuresSection.cta && (
+            <Box textAlign="center" mt={5}>
+              <Button
+                component={Link}
+                to={featuresSection.cta.url}
+                variant="contained"
+                color="secondary"
+                className={classes.btn}
+              >
+                {featuresSection.cta.label}
+              </Button>
+            </Box>
+          )}
         </Container>
       </Box>
-      {/* s4 */}
-      <Box pt={10} pb={6} bgcolor="#f6f7fb">
-        <Container fixed>
-          <Grid container spacing={5}>
-            <Grid item xs={12} lg={7}>
-              <Box display="flex" alignItems="center" height="100%">
-                <Box>
-                  <Typography variant="h2" className={classes.h2}>
-                    Anytime, Anywhere Access
-                  </Typography>
-                  <Typography variant="body1" style={{ maxWidth: 400 }}>
-                    Through an instictive, modern interface, access all of your
-                    client information on any device whenever and wherever you
-                    need it.
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12} lg={5}>
-              <img src={IMG2} alt="" style={{ width: '100%' }} />
-            </Grid>
-          </Grid>
-          <Box textAlign="center" mt={5}>
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.btn}
-            >
-              GET DEMO TODAY
-            </Button>
-          </Box>
-        </Container>
-      </Box>
-      {/* s5 */}
+      {/* solutions */}
       <Box py={10}>
         <Container fixed>
           <Grid container spacing={10}>
-            <Grid item xs={12} lg={4}>
-              <Box textAlign="center" maxWidth={400}>
-                <img
-                  src={IMG3}
-                  alt=""
-                  style={{ width: '80%', margin: '0 auto 20px' }}
-                />
-                <Typography variant="h3" gutterBottom>
-                  Get More Time Back Each Day
-                </Typography>
-                <Typography variant="body1">
-                  Lorem ipsum ipsum lorem ipsum.
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} lg={4}>
-              <Box textAlign="center" maxWidth={400}>
-                <img
-                  src={IMG3}
-                  alt=""
-                  style={{ width: '80%', margin: '0 auto 20px' }}
-                />
-                <Typography variant="h3" gutterBottom>
-                  Make Informed Decisions
-                </Typography>
-                <Typography variant="body1">
-                  Lorem ipsum ipsum lorem ipsum.
-                </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} lg={4}>
-              <Box textAlign="center" maxWidth={400}>
-                <img
-                  src={IMG3}
-                  alt=""
-                  style={{ width: '80%', margin: '0 auto 20px' }}
-                />
-                <Typography variant="h3" gutterBottom>
-                  Collaborate, Communicate and Streamline Work
-                </Typography>
-                <Typography variant="body1">
-                  Lorem ipsum ipsum lorem ipsum.
-                </Typography>
-              </Box>
-            </Grid>
+            {solutions.map(solution => (
+              <Grid key={solution.id} item xs={12} lg={4}>
+                <Box textAlign="center" maxWidth={320}>
+                  <img
+                    src={solution.image.asset.fluid.src}
+                    alt={solution.image.alt}
+                    style={{ width: '90%', margin: '0 auto 20px' }}
+                  />
+                  <Typography variant="h3" gutterBottom>
+                    {solution.title}
+                  </Typography>
+                  <Typography variant="body1">
+                    {solution.description}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Box>
-      {/* s6 */}
+      {/* statements */}
       <Container fixed>
-        <Box
-          p={5}
-          bgcolor="#BCE3D1"
-          borderRadius="0 50px 50px 50px"
-          textAlign="center"
-        >
-          <Typography variant="h2" gutterBottom style={{ lineHeight: 1.5 }}>
-            Statement Summerizing the big problem this product solves, for the
-            absolutely insanely low price of...
-          </Typography>
-          <Typography variant="h4">$595</Typography>
-        </Box>
-      </Container>
-      <Container fixed>
-        <Box py={10} textAlign="center" maxWidth={800} margin="0 auto">
-          <Typography variant="h2" gutterBottom style={{ lineHeight: 1.5 }}>
-            Dockit, by Needles
-            <br />
-            delivered with decades of legal intelligence, supported by a history
-            of 2,000 Needles firms, and reimagined with the most modern
-            technology
-          </Typography>
-        </Box>
-      </Container>
-      <Container fixed>
-        <Box
-          p={5}
-          bgcolor="#CCBEDF"
-          borderRadius="0 50px 50px 50px"
-          textAlign="center"
-        >
-          <Typography variant="h2">Want to get started statement?</Typography>
-          <Button
-            variant="contained"
-            color="secondary"
-            className={`${classes.btn} ${classes.btnPurple}`}
-          >
-            GET DEMO TODAY
-          </Button>
-        </Box>
+        {statements.map(statement => (
+          <Box key={statement.id}>
+            {statement.style === 'box1' && (
+              <Box
+                p={5}
+                bgcolor="#BCE3D1"
+                borderRadius="0 50px 50px 50px"
+                textAlign="center"
+              >
+                <Typography
+                  variant="h2"
+                  gutterBottom
+                  style={{ lineHeight: 1.5 }}
+                >
+                  {statement.title}
+                </Typography>
+                {statement.price && (
+                  <Typography variant="h4">${statement.price}</Typography>
+                )}
+              </Box>
+            )}
+            {statement.style === 'simple' && (
+              <Box py={10} textAlign="center" maxWidth={800} margin="0 auto">
+                <Typography
+                  variant="h2"
+                  gutterBottom
+                  style={{ lineHeight: 1.5 }}
+                >
+                  {statement.title}
+                </Typography>
+              </Box>
+            )}
+            {statement.style === 'box2' && (
+              <Box
+                p={5}
+                bgcolor="#CCBEDF"
+                borderRadius="0 50px 50px 50px"
+                textAlign="center"
+              >
+                <Typography variant="h2">{statement.title}</Typography>
+                {statement.cta && (
+                  <Button
+                    component={Link}
+                    to={statement.cta.url}
+                    variant="contained"
+                    color="secondary"
+                    className={`${classes.btn} ${classes.btnPurple}`}
+                  >
+                    {statement.cta.label}
+                  </Button>
+                )}
+              </Box>
+            )}
+          </Box>
+        ))}
       </Container>
     </Layout>
   );
