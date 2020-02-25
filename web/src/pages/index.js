@@ -1,17 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-// import {
-//   mapEdgesToNodes,
-//   filterOutDocsWithoutSlugs,
-//   filterOutDocsPublishedInTheFuture,
-// } from '../lib/helpers';
-// import BlogPostPreviewList from '../components/blog-post-preview-list';
-// import Container from '../components/container';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
-
-// import { Link } from 'gatsby';
 import {
   Container,
   Grid,
@@ -20,15 +11,8 @@ import {
   Button,
   Link,
 } from '@material-ui/core';
-// import Layout from '../components/layout';
-// import Image from '../components/image';
-// import IMG1 from '../images/img1.jpg';
-// import IMG2 from '../images/img2.jpg';
-// import IMG3 from '../images/img3.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 import theme from '../components/theme';
-// import heroSection from '../../../studio/schemas/objects/heroSection';
-// import featuresSection from '../../../studio/schemas/objects/featuresSection';
 
 const useStyles = makeStyles({
   h2: {
@@ -180,7 +164,11 @@ const IndexPage = props => {
 
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO
+        title={title}
+        description={seo ? seo.description : ''}
+        keywords={seo ? seo.keywords : []}
+      />
       {/* hero */}
       <Box mt={8}>
         <Container fixed>
