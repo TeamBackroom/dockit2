@@ -55,51 +55,68 @@ const useStyles = makeStyles({
 });
 
 export const query = graphql`
-  fragment SanityImage on SanityMainImage {
-    crop {
-      _key
-      _type
-      top
-      bottom
-      left
-      right
-    }
-    hotspot {
-      _key
-      _type
-      x
-      y
-      height
-      width
-    }
-    asset {
-      _id
-    }
-  }
-
-  query IndexPageQuery {
-    site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      title
-      description
-      keywords
-    }
-    posts: allSanityPost(
-      limit: 6
-      sort: { fields: [publishedAt], order: DESC }
-      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
-    ) {
+  {
+    allSanityLandingPage {
       edges {
         node {
-          id
-          publishedAt
-          mainImage {
-            ...SanityImage
-            alt
+          heroSection {
+            feature {
+              description
+              image {
+                caption
+                asset {
+                  fluid {
+                    src
+                  }
+                }
+                alt
+              }
+              title
+            }
+            cta {
+              label
+              url
+            }
+          }
+          seo {
+            description
+            author
+            keywords
+          }
+          solutions {
+            title
+            image {
+              asset {
+                fluid {
+                  src
+                }
+              }
+            }
           }
           title
-          _rawExcerpt
-          slug {
-            current
+          statements {
+            title
+            style
+            price
+            cta {
+              url
+              label
+            }
+          }
+          featuresSection {
+            features {
+              title
+              description
+              image {
+                caption
+                alt
+                asset {
+                  fluid {
+                    src
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -119,18 +136,11 @@ const IndexPage = props => {
     );
   }
 
-  const site = (data || {}).site;
-  const postNodes = (data || {}).posts
-    ? mapEdgesToNodes(data.posts)
-        .filter(filterOutDocsWithoutSlugs)
-        .filter(filterOutDocsPublishedInTheFuture)
-    : [];
+  // const site = (data || {}).site;
 
-  if (!site) {
-    throw new Error(
-      'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.',
-    );
-  }
+  // if (!site) {
+  //   throw new Error('Missing "Site settings".');
+  // }
 
   return (
     <Layout>

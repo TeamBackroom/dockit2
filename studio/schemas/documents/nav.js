@@ -12,12 +12,7 @@ export default {
       title: 'Footer Nav',
       of: [
         {
-          type: 'object',
-          fields: [
-            { title: 'Title', name: 'title', type: 'string' },
-            { title: 'URL', name: 'url', type: 'url' },
-            { title: 'Open in New Tab', name: 'newTab', type: 'boolean' },
-          ],
+          type: 'navItem',
         },
       ],
     },
