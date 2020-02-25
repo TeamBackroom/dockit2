@@ -1,30 +1,75 @@
-import {Link} from 'gatsby'
-import React from 'react'
-import Icon from './icon'
-import {cn} from '../lib/helpers'
+// import { Link } from "gatsby"
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Box, Container } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-import styles from './header.module.css'
+const useStyles = makeStyles(theme => ({
+  header: {
+    fontFamily: 'Rubik',
+    fontSize: '3rem',
+    fontWeight: 500,
+    color: theme.palette.common.white,
+    backgroundColor: theme.palette.primary.main,
+    padding: '30px 30px 10px 0',
+    borderRadius: '0 0 30px 0',
+  },
+  headerRight: {
+    backgroundColor: '#BCE3D1',
+    borderRadius: '0 0 0 30px',
+    width: '100%',
+    marginLeft: 10,
+  },
+  wrapper: {
+    position: 'relative',
+    '&::before': {
+      content: '""',
+      display: 'block',
+      backgroundColor: theme.palette.primary.main,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: '50%',
+      bottom: 0,
+      zIndex: -1,
+    },
+    '&::after': {
+      content: '""',
+      display: 'block',
+      backgroundColor: '#BCE3D1',
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      left: '50%',
+      bottom: 0,
+      zIndex: -1,
+    },
+  },
+  inner: {
+    backgroundColor: theme.palette.common.white,
+  },
+}));
 
-const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
-  <div className={styles.root}>
-    <div className={styles.wrapper}>
-      <div className={styles.branding}>
-        <Link to='/'>{siteTitle}</Link>
-      </div>
+function Header({ siteTitle }) {
+  const classes = useStyles();
+  return (
+    <Box className={classes.wrapper}>
+      <Container>
+        <Box display="flex" className={classes.inner}>
+          <header className={classes.header}>{siteTitle}</header>
+          <Box className={classes.headerRight}></Box>
+        </Box>
+      </Container>
+    </Box>
+  );
+}
 
-      <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
-        <Icon symbol='hamburger' />
-      </button>
+Header.propTypes = {
+  siteTitle: PropTypes.string,
+};
 
-      <nav className={cn(styles.nav, showNav && styles.showNav)}>
-        <ul>
-          <li>
-            <Link to='/archive/'>Archive</Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-)
+Header.defaultProps = {
+  siteTitle: ``,
+};
 
-export default Header
+export default Header;
