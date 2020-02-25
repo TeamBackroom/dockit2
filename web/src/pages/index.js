@@ -309,7 +309,20 @@ const IndexPage = props => {
                   {statement.title}
                 </Typography>
                 {statement.price && (
-                  <Typography variant="h4">${statement.price}</Typography>
+                  <Typography variant="h4" gutterBottom>
+                    ${statement.price}
+                  </Typography>
+                )}
+                {statement.cta && (
+                  <Button
+                    component={Link}
+                    to={statement.cta.url}
+                    variant="contained"
+                    color="secondary"
+                    className={`${classes.btn} ${classes.btnPurple}`}
+                  >
+                    {statement.cta.label}
+                  </Button>
                 )}
               </Box>
             )}
@@ -322,6 +335,22 @@ const IndexPage = props => {
                 >
                   {statement.title}
                 </Typography>
+                {statement.price && (
+                  <Typography variant="h4" gutterBottom>
+                    ${statement.price}
+                  </Typography>
+                )}
+                {statement.cta && (
+                  <Button
+                    component={Link}
+                    to={statement.cta.url}
+                    variant="contained"
+                    color="secondary"
+                    className={`${classes.btn} ${classes.btnPurple}`}
+                  >
+                    {statement.cta.label}
+                  </Button>
+                )}
               </Box>
             )}
             {statement.style === 'box2' && (
@@ -331,7 +360,12 @@ const IndexPage = props => {
                 borderRadius="0 50px 50px 50px"
                 textAlign="center"
               >
-                <Typography variant="h2">{statement.title}</Typography>
+                <Typography variant="h2" gutterBottom>
+                  {statement.title}
+                </Typography>
+                {statement.price && (
+                  <Typography variant="h4">${statement.price}</Typography>
+                )}
                 {statement.cta && (
                   <Button
                     component={Link}
