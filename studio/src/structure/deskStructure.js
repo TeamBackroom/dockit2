@@ -1,6 +1,16 @@
 import S from '@sanity/desk-tool/structure-builder';
-import MdSettings from 'react-icons/lib/md/settings';
-import { MdPerson, MdDescription, MdLocalOffer } from 'react-icons/lib/md';
+import {
+  MdMenu,
+  MdSettings,
+  MdPerson,
+  MdDescription,
+  MdLocalOffer,
+  MdFlashOn,
+  MdAnnouncement,
+  MdAssignmentTurnedIn,
+  MdSettingsInputComponent,
+  MdInsertDriveFile,
+} from 'react-icons/lib/md';
 import IframePreview from '../previews/IframePreview';
 
 // Web preview configuration
@@ -54,8 +64,19 @@ export default () =>
         ),
       S.divider(),
       S.listItem()
+        .title('Nav')
+        .icon(MdMenu)
+        .schemaType('nav')
+        .child(
+          S.editor()
+            .id('nav')
+            .schemaType('nav')
+            .documentId('nav'),
+        ),
+      S.divider(),
+      S.listItem()
         .title('Landing Page')
-        .icon(MdDescription)
+        .icon(MdInsertDriveFile)
         .child(
           S.editor()
             .id('landingPage')
@@ -64,12 +85,22 @@ export default () =>
         ),
       S.listItem()
         .title('Features')
-        .icon(MdDescription)
+        .icon(MdSettingsInputComponent)
         .schemaType('feature')
         .child(S.documentTypeList('feature').title('Features')),
       S.listItem()
+        .title('Solutions')
+        .icon(MdAssignmentTurnedIn)
+        .schemaType('solution')
+        .child(S.documentTypeList('solution').title('Solutions')),
+      S.listItem()
+        .title('Statements')
+        .icon(MdAnnouncement)
+        .schemaType('statement')
+        .child(S.documentTypeList('statement').title('Statements')),
+      S.listItem()
         .title('CTAs')
-        .icon(MdDescription)
+        .icon(MdFlashOn)
         .schemaType('cta')
         .child(S.documentTypeList('cta').title('CTAs')),
       S.divider(),
@@ -91,6 +122,7 @@ export default () =>
       // `S.documentTypeListItems()` returns an array of all the document types
       // defined in schema.js. We filter out those that we have
       // defined the structure above.
+      S.divider(),
       ...S.documentTypeListItems().filter(
         listItem =>
           ![
@@ -99,6 +131,11 @@ export default () =>
             'post',
             'siteSettings',
             'landingPage',
+            'feature',
+            'cta',
+            'solution',
+            'statement',
+            'nav',
           ].includes(listItem.getId()),
       ),
     ]);

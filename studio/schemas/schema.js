@@ -12,6 +12,9 @@ import siteSettings from './documents/siteSettings';
 import landingPage from './documents/landingPage';
 import feature from './documents/feature';
 import cta from './documents/cta';
+import solution from './documents/solution';
+import statement from './documents/statement';
+import nav from './documents/nav';
 
 // Object types
 import bodyPortableText from './objects/bodyPortableText';
@@ -31,6 +34,9 @@ export default createSchema({
     // in the studio.
     feature,
     cta,
+    solution,
+    statement,
+    nav,
     landingPage,
     siteSettings,
     post,

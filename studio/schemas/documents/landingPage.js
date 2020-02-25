@@ -33,6 +33,7 @@ export default {
       type: 'object',
       fields: [
         {
+          title: 'Features List',
           name: 'features',
           type: 'array',
           of: [{ type: 'reference', to: [{ type: 'feature' }] }],
@@ -45,6 +46,20 @@ export default {
           to: [{ type: 'cta' }],
         },
       ],
+    },
+    {
+      title: 'Solutions Section',
+      name: 'solutions',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'solution' }] }],
+      validation: Rule => Rule.unique(),
+    },
+    {
+      title: 'Statements Section',
+      name: 'statements',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'statement' }] }],
+      validation: Rule => Rule.unique(),
     },
     {
       name: 'SEO',

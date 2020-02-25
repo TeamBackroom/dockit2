@@ -1,9 +1,9 @@
 import { format } from 'date-fns';
 
 export default {
-  name: 'feature',
+  name: 'solution',
   type: 'document',
-  title: 'Feature',
+  title: 'Solution',
   fields: [
     {
       name: 'title',
