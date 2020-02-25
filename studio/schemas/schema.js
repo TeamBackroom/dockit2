@@ -10,6 +10,8 @@ import category from './documents/category';
 import post from './documents/post';
 import siteSettings from './documents/siteSettings';
 import landingPage from './documents/landingPage';
+import feature from './documents/feature';
+import cta from './documents/cta';
 
 // Object types
 import bodyPortableText from './objects/bodyPortableText';
@@ -27,6 +29,8 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
+    feature,
+    cta,
     landingPage,
     siteSettings,
     post,

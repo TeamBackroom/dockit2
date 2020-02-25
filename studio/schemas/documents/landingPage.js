@@ -10,27 +10,71 @@ export default {
       title: 'Title',
     },
     {
-      name: 'description',
-      type: 'text',
-      title: 'Description',
-      description: 'Describe your blog for search engines and social media.',
+      name: 'heroSection',
+      type: 'object',
+      fields: [
+        {
+          title: 'Feature',
+          name: 'feature',
+          type: 'reference',
+          to: [{ type: 'feature' }],
+        },
+        {
+          title: 'Call-To-Action',
+          name: 'cta',
+          type: 'reference',
+          to: [{ type: 'cta' }],
+        },
+      ],
     },
     {
-      name: 'keywords',
-      type: 'array',
-      title: 'Keywords',
-      description: 'Add keywords that describes your blog.',
-      of: [{ type: 'string' }],
-      options: {
-        layout: 'tags',
-      },
+      title: 'Features Section',
+      name: 'featuresSection',
+      type: 'object',
+      fields: [
+        {
+          name: 'features',
+          type: 'array',
+          of: [{ type: 'reference', to: [{ type: 'feature' }] }],
+          validation: Rule => Rule.unique(),
+        },
+        {
+          title: 'Call-To-Action',
+          name: 'cta',
+          type: 'reference',
+          to: [{ type: 'cta' }],
+        },
+      ],
     },
     {
-      name: 'author',
-      type: 'reference',
-      description: 'Publish an author and set a reference to them here.',
-      title: 'Author',
-      to: [{ type: 'author' }],
+      name: 'SEO',
+      type: 'object',
+      options: { collapsible: true, collapsed: true },
+      fields: [
+        {
+          name: 'description',
+          type: 'text',
+          title: 'Description',
+          description: 'Describe the page for search engines and social media.',
+        },
+        {
+          name: 'keywords',
+          type: 'array',
+          title: 'Keywords',
+          description: 'Add keywords that describes the page.',
+          of: [{ type: 'string' }],
+          options: {
+            layout: 'tags',
+          },
+        },
+        {
+          name: 'author',
+          type: 'reference',
+          description: 'Publish an author and set a reference to them here.',
+          title: 'Author',
+          to: [{ type: 'author' }],
+        },
+      ],
     },
   ],
 };
