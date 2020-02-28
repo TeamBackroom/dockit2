@@ -27,6 +27,11 @@ export default {
       validation: Rule => Rule.unique(),
     },
     {
+      name: 'screenshot',
+      type: 'mainImage',
+      title: 'Screenshot',
+    },
+    {
       title: 'Statements Section',
       name: 'statements',
       type: 'array',
