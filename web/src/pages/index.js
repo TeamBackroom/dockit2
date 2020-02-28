@@ -120,6 +120,15 @@ export const query = graphql`
               }
             }
           }
+          screenshot {
+            caption
+            alt
+            asset {
+              fluid {
+                src
+              }
+            }
+          }
           statements {
             id
             title
@@ -145,6 +154,7 @@ const IndexPage = props => {
     heroSection,
     featuresSection,
     solutions,
+    screenshot,
     statements,
   } = data.allSanityLandingPage.edges[0].node;
 
@@ -278,6 +288,18 @@ const IndexPage = props => {
           </Grid>
         </Container>
       </Box>
+      {/* screenshot */}
+      {screenshot && (
+        <Container fixed>
+          <Box mb={10}>
+            <img
+              src={screenshot.asset.fluid.src}
+              alt={screenshot.alt}
+              style={{ width: '100%' }}
+            />
+          </Box>
+        </Container>
+      )}
       {/* statements */}
       <Container fixed>
         {statements.map(statement => (
