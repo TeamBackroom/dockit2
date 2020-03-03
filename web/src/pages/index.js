@@ -94,6 +94,7 @@ export const query = graphql`
           }
         }
         featuresSection {
+          title
           features {
             id
             title
@@ -223,6 +224,11 @@ const IndexPage = props => {
       {/* features */}
       <Box py={10} bgcolor="#f6f7fb" id="features">
         <Container fixed>
+          <Box mb={10} textAlign="center">
+            <Typography variant="h1" component="h2" gutterBottom>
+              {featuresSection.title}
+            </Typography>
+          </Box>
           {featuresSection.features.map((feature, index) => (
             <Box key={feature.id} mt={index > 0 ? 10 : 0}>
               <Grid
