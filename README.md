@@ -1,4 +1,4 @@
-# Needdles | Neos
+# Needles | Neos
 
 _Fully customizable blog template with a React.js front-end._
 
