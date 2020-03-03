@@ -184,7 +184,7 @@ const IndexPage = props => {
         keywords={seo ? seo.keywords : []}
       />
       {/* hero */}
-      <Box mt={8}>
+      <Box my={8}>
         <Container fixed>
           <Grid container spacing={5}>
             <Grid item xs={12} lg={6}>
