@@ -16,8 +16,8 @@ function Solutions({ solutions }) {
   const classes = useStyles();
 
   return (
-    <Box py={10}>
-      <Container fixed>
+    <Container fixed id="solutions">
+      <Box py={10}>
         <Grid container spacing={10}>
           {solutions.map(solution => (
             <Grid key={solution.id} item xs={12} lg={4}>
@@ -37,8 +37,8 @@ function Solutions({ solutions }) {
             </Grid>
           ))}
         </Grid>
-      </Container>
-    </Box>
+      </Box>
+    </Container>
   );
 }
 

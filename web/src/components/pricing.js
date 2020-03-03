@@ -33,7 +33,7 @@ function Pricing({ plans }) {
   const classes = useStyles();
 
   return (
-    <Container fixed>
+    <Container fixed id="pricing">
       <Box mt={10} mb="150px">
         <Grid container spacing={10}>
           {plans.map(plan => (
