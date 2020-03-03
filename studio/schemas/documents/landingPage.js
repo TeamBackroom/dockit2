@@ -27,9 +27,11 @@ export default {
       validation: Rule => Rule.unique(),
     },
     {
-      name: 'screenshot',
-      type: 'mainImage',
-      title: 'Screenshot',
+      title: 'Pricing Section',
+      name: 'pricing',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'plan' }] }],
+      validation: Rule => Rule.unique(),
     },
     {
       title: 'Statements Section',
@@ -39,9 +41,16 @@ export default {
       validation: Rule => Rule.unique(),
     },
     {
+      name: 'screenshot',
+      title: 'Screenshot',
+      type: 'mainImage',
+      options: { collapsible: true, collapsed: true },
+    },
+    {
       name: 'seo',
       title: 'SEO',
       type: 'seo',
+      options: { collapsible: true, collapsed: true },
     },
   ],
 };

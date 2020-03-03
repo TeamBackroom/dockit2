@@ -15,6 +15,7 @@ import cta from './documents/cta';
 import solution from './documents/solution';
 import statement from './documents/statement';
 import nav from './documents/nav';
+import plan from './documents/plan';
 
 // Object types
 import bodyPortableText from './objects/bodyPortableText';
@@ -41,6 +42,7 @@ export default createSchema({
     solution,
     statement,
     nav,
+    plan,
     landingPage,
     siteSettings,
     post,

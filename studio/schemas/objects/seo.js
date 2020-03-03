@@ -2,7 +2,6 @@ export default {
   title: 'SEO',
   name: 'seo',
   type: 'object',
-  options: { collapsible: true, collapsed: true },
   fields: [
     {
       name: 'description',

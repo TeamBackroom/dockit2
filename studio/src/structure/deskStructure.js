@@ -10,6 +10,7 @@ import {
   MdAssignmentTurnedIn,
   MdSettingsInputComponent,
   MdInsertDriveFile,
+  MdAttachMoney,
 } from 'react-icons/lib/md';
 import IframePreview from '../previews/IframePreview';
 
@@ -103,6 +104,11 @@ export default () =>
         .icon(MdFlashOn)
         .schemaType('cta')
         .child(S.documentTypeList('cta').title('CTAs')),
+      S.listItem()
+        .title('Pricing')
+        .icon(MdAttachMoney)
+        .schemaType('plan')
+        .child(S.documentTypeList('plan').title('Subscription PLans')),
       S.divider(),
       S.listItem()
         .title('Blog posts')
@@ -136,6 +142,7 @@ export default () =>
             'solution',
             'statement',
             'nav',
+            'plan',
           ].includes(listItem.getId()),
       ),
     ]);
