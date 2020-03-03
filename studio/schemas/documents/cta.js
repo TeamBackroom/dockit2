@@ -12,7 +12,7 @@ export default {
     },
     {
       name: 'url',
-      type: 'url',
+      type: 'string',
       title: 'URL',
     },
   ],

@@ -199,7 +199,7 @@ const IndexPage = props => {
                   {heroSection.cta && (
                     <Button
                       component={Link}
-                      to={heroSection.cta.url}
+                      href={heroSection.cta.url}
                       variant="contained"
                       color="secondary"
                       className={classes.btn}
@@ -221,7 +221,7 @@ const IndexPage = props => {
         </Container>
       </Box>
       {/* features */}
-      <Box py={10} bgcolor="#f6f7fb">
+      <Box py={10} bgcolor="#f6f7fb" id="features">
         <Container fixed>
           {featuresSection.features.map((feature, index) => (
             <Box key={feature.id} mt={index > 0 ? 10 : 0}>
@@ -257,7 +257,7 @@ const IndexPage = props => {
             <Box textAlign="center" mt={5}>
               <Button
                 component={Link}
-                to={featuresSection.cta.url}
+                href={featuresSection.cta.url}
                 variant="contained"
                 color="secondary"
                 className={classes.btn}
@@ -330,7 +330,7 @@ const IndexPage = props => {
                 {statement.cta && (
                   <Button
                     component={Link}
-                    to={statement.cta.url}
+                    href={statement.cta.url}
                     variant="contained"
                     color="secondary"
                     className={`${classes.btn} ${classes.btnPurple}`}
@@ -357,7 +357,7 @@ const IndexPage = props => {
                 {statement.cta && (
                   <Button
                     component={Link}
-                    to={statement.cta.url}
+                    href={statement.cta.url}
                     variant="contained"
                     color="secondary"
                     className={classes.btn}
@@ -383,7 +383,7 @@ const IndexPage = props => {
                 {statement.cta && (
                   <Button
                     component={Link}
-                    to={statement.cta.url}
+                    href={statement.cta.url}
                     variant="contained"
                     color="secondary"
                     className={classes.btn}
