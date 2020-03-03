@@ -13,14 +13,14 @@ export default {
               sites: [
                 {
                   buildHookId: '5e53e4d3f91fc6ef766cbdaa',
-                  title: 'Neddles | Neos',
-                  name: 'neddles-neos-studio',
+                  title: 'Needdles | Neos',
+                  name: 'needdles-neos-studio',
                   apiId: '004c29a7-acdc-44b0-9090-fc617959842b',
                 },
                 {
                   buildHookId: '5e53e4d38bfad7e7506095fc',
-                  title: 'Neddles | Neos',
-                  name: 'neddles-neos-web',
+                  title: 'Needdles | Neos',
+                  name: 'needdles-neos-web',
                   apiId: 'dba0cd3e-0d83-4d13-ba6d-d7bb85752bc5',
                 },
               ],
