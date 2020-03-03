@@ -1,25 +1,26 @@
 import { format } from 'date-fns';
 
 export default {
+  title: 'Solution',
   name: 'solution',
   type: 'document',
-  title: 'Solution',
   fields: [
     {
+      title: 'Title',
       name: 'title',
       type: 'string',
-      title: 'Title',
       description: 'Titles should be catchy, descriptive, and not too long.',
     },
     {
-      name: 'description',
-      type: 'text',
       title: 'Description',
+      name: 'description',
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
+      title: 'Image',
       name: 'image',
       type: 'mainImage',
-      title: 'Image',
     },
   ],
 };

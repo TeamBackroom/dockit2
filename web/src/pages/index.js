@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import theme from '../components/theme';
+import PortableText from '../components/portableText';
 
 const useStyles = makeStyles({
   h2: {
@@ -55,64 +56,51 @@ const useStyles = makeStyles({
     borderRadius: '0 50px 50px 50px',
     textAlign: 'center',
   },
-  box2: {},
+  solution: {
+    '& ul': {
+      margin: 0,
+      padding: 0,
+    },
+  },
 });
 
 export const query = graphql`
   {
-    allSanityLandingPage {
-      edges {
-        node {
-          title
-          seo {
+    page: allSanityLandingPage {
+      nodes {
+        title
+        seo {
+          description
+          author
+          keywords
+        }
+        heroSection {
+          feature {
             description
-            author
-            keywords
-          }
-          heroSection {
-            feature {
-              description
-              image {
-                caption
-                asset {
-                  fluid {
-                    src
-                  }
-                }
-                alt
-              }
-              title
-            }
-            cta {
-              label
-              url
-            }
-          }
-          featuresSection {
-            features {
-              id
-              title
-              description
-              image {
-                caption
-                alt
-                asset {
-                  fluid {
-                    src
-                  }
+            image {
+              caption
+              asset {
+                fluid {
+                  src
                 }
               }
+              alt
             }
-            cta {
-              label
-              url
-            }
+            title
           }
-          solutions {
+          cta {
+            label
+            url
+          }
+        }
+        featuresSection {
+          features {
             id
             title
             description
             image {
+              caption
+              alt
               asset {
                 fluid {
                   src
@@ -120,24 +108,40 @@ export const query = graphql`
               }
             }
           }
-          screenshot {
-            caption
-            alt
+          cta {
+            label
+            url
+          }
+        }
+        solutions {
+          id
+          title
+          _rawDescription
+          image {
             asset {
               fluid {
                 src
               }
             }
           }
-          statements {
-            id
-            title
-            style
-            price
-            cta {
-              url
-              label
+        }
+        screenshot {
+          caption
+          alt
+          asset {
+            fluid {
+              src
             }
+          }
+        }
+        statements {
+          id
+          title
+          style
+          price
+          cta {
+            url
+            label
           }
         }
       }
@@ -156,7 +160,7 @@ const IndexPage = props => {
     solutions,
     screenshot,
     statements,
-  } = data.allSanityLandingPage.edges[0].node;
+  } = data.page.nodes[0];
 
   if (errors) {
     return (
@@ -279,9 +283,9 @@ const IndexPage = props => {
                   <Typography variant="h3" gutterBottom>
                     {solution.title}
                   </Typography>
-                  <Typography variant="body1">
-                    {solution.description}
-                  </Typography>
+                </Box>
+                <Box maxWidth={280} mx="auto" className={classes.solution}>
+                  <PortableText blocks={solution._rawDescription} />
                 </Box>
               </Grid>
             ))}

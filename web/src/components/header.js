@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Box, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { imageUrlFor } from '../lib/image-url';
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -51,9 +50,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Header({ siteTitle, logo }) {
+function Header({ logo }) {
   const classes = useStyles();
-  console.log(logo);
 
   return (
     <Box className={classes.wrapper}>
@@ -72,12 +70,10 @@ function Header({ siteTitle, logo }) {
 }
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
   logo: PropTypes.object,
 };
 
 Header.defaultProps = {
-  siteTitle: '',
   logo: null,
 };
 
