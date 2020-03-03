@@ -10,6 +10,7 @@ import {
   Typography,
   Button,
   Link,
+  Hidden,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import theme from '../components/theme';
@@ -170,13 +171,15 @@ const IndexPage = props => {
             alignItems="center"
           >
             {statement.image && (
-              <Box mr={10}>
-                <img
-                  src={statement.image.asset.fluid.src}
-                  alt={statement.image.alt}
-                  style={{ height: '100%' }}
-                />
-              </Box>
+              <Hidden lgDown>
+                <Box mr={10}>
+                  <img
+                    src={statement.image.asset.fluid.src}
+                    alt={statement.image.alt}
+                    style={{ height: '100%' }}
+                  />
+                </Box>
+              </Hidden>
             )}
             <Typography variant="h2" gutterBottom style={{ lineHeight: 1.5 }}>
               <PortableText blocks={statement._rawTitle} />
