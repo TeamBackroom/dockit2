@@ -291,9 +291,11 @@ export const query = graphql`
         plans {
           id
           _rawTitle
+          _rawSubtitle
           _rawDescription
           annualPrice
           monthlyPrice
+          comingSoon
         }
       }
     }

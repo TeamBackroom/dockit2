@@ -6,6 +6,15 @@ import PortableText from '../components/portableText';
 const useStyles = makeStyles({
   planTitle: {
     lineHeight: 1.2,
+    fontSize: '2.2rem',
+    '& p': {
+      marginTop: 0,
+      marginBottom: 10,
+    },
+  },
+  planSubtitle: {
+    lineHeight: 1.2,
+    fontSize: '1.5rem',
     '& p': {
       marginTop: 0,
       marginBottom: 10,
@@ -26,6 +35,10 @@ const useStyles = makeStyles({
       left: '50%',
       transform: 'translateX(-40px)',
     },
+  },
+  comingSoon: {
+    fontSize: '1rem',
+    color: '#F25523',
   },
 });
 
@@ -48,6 +61,17 @@ function Pricing({ plans }) {
                 flexDirection="column"
                 justifyContent="space-between"
               >
+                <Typography
+                  variant="h3"
+                  gutterBottom
+                  className={classes.comingSoon}
+                >
+                  {plan.comingSoon ? (
+                    <span>COMING SOON!</span>
+                  ) : (
+                    <span>&nbsp;</span>
+                  )}
+                </Typography>
                 <Box>
                   <Typography
                     variant="h3"
@@ -55,6 +79,13 @@ function Pricing({ plans }) {
                     className={classes.planTitle}
                   >
                     <PortableText blocks={plan._rawTitle} />
+                  </Typography>
+                  <Typography
+                    variant="h3"
+                    gutterBottom
+                    className={classes.planSubtitle}
+                  >
+                    <PortableText blocks={plan._rawSubtitle} />
                   </Typography>
                   <PortableText blocks={plan._rawDescription} />
                 </Box>

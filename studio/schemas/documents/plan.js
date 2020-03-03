@@ -13,6 +13,12 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      title: 'SubTitle',
+      name: 'subtitle',
+      type: 'array',
+      of: [{ type: 'block' }],
+    },
+    {
       title: 'Description',
       name: 'description',
       type: 'array',
@@ -27,6 +33,11 @@ export default {
       title: 'Monthly Price',
       name: 'monthlyPrice',
       type: 'number',
+    },
+    {
+      title: 'Coming Soon',
+      name: 'comingSoon',
+      type: 'boolean',
     },
   ],
   preview: {
