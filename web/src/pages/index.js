@@ -14,6 +14,10 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import theme from '../components/theme';
 import PortableText from '../components/portableText';
+import HeroSection from '../components/hero';
+import Feature from '../components/feature';
+import Solutions from '../components/solutions';
+import Pricing from '../components/pricing';
 
 const useStyles = makeStyles({
   h2: {
@@ -56,13 +60,144 @@ const useStyles = makeStyles({
     borderRadius: '0 50px 50px 50px',
     textAlign: 'center',
   },
-  solution: {
-    '& ul': {
-      margin: 0,
-      padding: 0,
+  planTitle: {
+    lineHeight: 1.2,
+    '& p': {
+      marginTop: 0,
+      marginBottom: 10,
+    },
+  },
+  planPrice: {
+    position: 'relative',
+    paddingTop: 20,
+    marginTop: 20,
+    '&::before': {
+      content: '""',
+      display: 'block',
+      width: 80,
+      height: 5,
+      backgroundColor: '#F25523',
+      position: 'absolute',
+      top: 0,
+      left: '50%',
+      transform: 'translateX(-40px)',
     },
   },
 });
+
+const IndexPage = props => {
+  const { data, errors } = props;
+  const classes = useStyles();
+  const {
+    title,
+    seo,
+    heroSection,
+    featuresSection,
+    solutions,
+    screenshot,
+    statements,
+    plans,
+  } = data.page.nodes[0];
+
+  if (errors) {
+    return (
+      <Layout>
+        <GraphQLErrorList errors={errors} />
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout>
+      <SEO
+        title={title}
+        description={seo ? seo.description : ''}
+        keywords={seo ? seo.keywords : []}
+      />
+      {/* hero */}
+      <HeroSection heroSection={heroSection} />
+      {/* features */}
+      <Box py={10} bgcolor="#f6f7fb" id="features">
+        <Container fixed>
+          <Box mb={10} textAlign="center">
+            <Typography variant="h1" component="h2" gutterBottom>
+              {featuresSection.title}
+            </Typography>
+          </Box>
+          {featuresSection.features.map((feature, index) => (
+            <Feature feature={feature} index={index} key={feature.id} />
+          ))}
+          {featuresSection.cta && (
+            <Box textAlign="center" mt={5}>
+              <Button
+                component={Link}
+                href={featuresSection.cta.url}
+                variant="contained"
+                color="secondary"
+                className={classes.btn}
+              >
+                {featuresSection.cta.label}
+              </Button>
+            </Box>
+          )}
+        </Container>
+      </Box>
+      {/* solutions */}
+      <Solutions solutions={solutions} />
+      {/* screenshot */}
+      {screenshot && screenshot.asset && (
+        <Container fixed>
+          <Box mb={10}>
+            <img
+              src={screenshot.asset.fluid.src}
+              alt={screenshot.alt}
+              style={{ width: '100%' }}
+            />
+          </Box>
+        </Container>
+      )}
+      {/* pricing */}
+      <Pricing plans={plans} />
+      {/* statements */}
+      <Container fixed>
+        {statements.map(statement => (
+          <Box
+            key={statement.id}
+            my={10}
+            textAlign={statement.image ? 'left' : 'center'}
+            margin="0 auto"
+            display={statement.image ? 'flex' : 'block'}
+            alignItems="center"
+          >
+            {statement.image && (
+              <Box mr={10}>
+                <img
+                  src={statement.image.asset.fluid.src}
+                  alt={statement.image.alt}
+                  style={{ height: '100%' }}
+                />
+              </Box>
+            )}
+            <Typography variant="h2" gutterBottom style={{ lineHeight: 1.5 }}>
+              <PortableText blocks={statement._rawTitle} />
+            </Typography>
+            {statement.cta && (
+              <Button
+                component={Link}
+                href={statement.cta.url}
+                variant="contained"
+                color="secondary"
+                className={classes.btn}
+              >
+                {statement.cta.label}
+              </Button>
+            )}
+          </Box>
+        ))}
+      </Container>
+    </Layout>
+  );
+};
 
 export const query = graphql`
   {
@@ -137,273 +272,29 @@ export const query = graphql`
         }
         statements {
           id
-          title
-          style
-          price
+          _rawTitle
+          image {
+            asset {
+              fluid {
+                src
+              }
+            }
+          }
           cta {
             url
             label
           }
         }
+        plans {
+          id
+          _rawTitle
+          _rawDescription
+          annualPrice
+          monthlyPrice
+        }
       }
     }
   }
 `;
-
-const IndexPage = props => {
-  const { data, errors } = props;
-  const classes = useStyles();
-  const {
-    title,
-    seo,
-    heroSection,
-    featuresSection,
-    solutions,
-    screenshot,
-    statements,
-  } = data.page.nodes[0];
-
-  if (errors) {
-    return (
-      <Layout>
-        <GraphQLErrorList errors={errors} />
-      </Layout>
-    );
-  }
-
-  // const site = (data || {}).site;
-
-  // if (!site) {
-  //   throw new Error('Missing "Site settings".');
-  // }
-
-  return (
-    <Layout>
-      <SEO
-        title={title}
-        description={seo ? seo.description : ''}
-        keywords={seo ? seo.keywords : []}
-      />
-      {/* hero */}
-      <Box my={8}>
-        <Container fixed>
-          <Grid container spacing={5}>
-            <Grid item xs={12} lg={6}>
-              <Box display="flex" alignItems="center" height="100%">
-                <Box>
-                  <Typography variant="h1" gutterBottom>
-                    {heroSection.feature.title}
-                  </Typography>
-                  <Typography variant="body1">
-                    {heroSection.feature.description}
-                  </Typography>
-                  {heroSection.cta && (
-                    <Button
-                      component={Link}
-                      href={heroSection.cta.url}
-                      variant="contained"
-                      color="secondary"
-                      className={classes.btn}
-                    >
-                      {heroSection.cta.label}
-                    </Button>
-                  )}
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12} lg={6}>
-              <img
-                src={heroSection.feature.image.asset.fluid.src}
-                alt={heroSection.feature.image.alt}
-                style={{ width: '100%', display: 'inherit' }}
-              />
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-      {/* features */}
-      <Box py={10} bgcolor="#f6f7fb" id="features">
-        <Container fixed>
-          <Box mb={10} textAlign="center">
-            <Typography variant="h1" component="h2" gutterBottom>
-              {featuresSection.title}
-            </Typography>
-          </Box>
-          {featuresSection.features.map((feature, index) => (
-            <Box key={feature.id} mt={index > 0 ? 10 : 0}>
-              <Grid
-                container
-                spacing={10}
-                justify="space-between"
-                direction={index % 2 === 0 ? 'row' : 'row-reverse'}
-              >
-                <Grid item xs={12} lg={5}>
-                  <Box display="flex" alignItems="center" height="100%">
-                    <Box>
-                      <Typography variant="h2" className={classes.h2}>
-                        {feature.title}
-                      </Typography>
-                      <Typography variant="body1" style={{ maxWidth: 400 }}>
-                        {feature.description}
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Grid>
-                <Grid item xs={12} lg={5}>
-                  <img
-                    src={feature.image.asset.fluid.src}
-                    alt={feature.image.alt}
-                    style={{ width: '100%' }}
-                  />
-                </Grid>
-              </Grid>
-            </Box>
-          ))}
-          {featuresSection.cta && (
-            <Box textAlign="center" mt={5}>
-              <Button
-                component={Link}
-                href={featuresSection.cta.url}
-                variant="contained"
-                color="secondary"
-                className={classes.btn}
-              >
-                {featuresSection.cta.label}
-              </Button>
-            </Box>
-          )}
-        </Container>
-      </Box>
-      {/* solutions */}
-      <Box py={10}>
-        <Container fixed>
-          <Grid container spacing={10}>
-            {solutions.map(solution => (
-              <Grid key={solution.id} item xs={12} lg={4}>
-                <Box textAlign="center" maxWidth={320}>
-                  <img
-                    src={solution.image.asset.fluid.src}
-                    alt={solution.image.alt}
-                    style={{ width: '90%', margin: '0 auto 20px' }}
-                  />
-                  <Typography variant="h3" gutterBottom>
-                    {solution.title}
-                  </Typography>
-                </Box>
-                <Box maxWidth={280} mx="auto" className={classes.solution}>
-                  <PortableText blocks={solution._rawDescription} />
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-      {/* screenshot */}
-      {screenshot && screenshot.asset && (
-        <Container fixed>
-          <Box mb={10}>
-            <img
-              src={screenshot.asset.fluid.src}
-              alt={screenshot.alt}
-              style={{ width: '100%' }}
-            />
-          </Box>
-        </Container>
-      )}
-      {/* statements */}
-      <Container fixed>
-        {statements.map(statement => (
-          <Box key={statement.id}>
-            {statement.style === 'box1' && (
-              <Box
-                p={5}
-                bgcolor="#BCE3D1"
-                borderRadius="0 50px 50px 50px"
-                textAlign="center"
-              >
-                <Typography
-                  variant="h2"
-                  gutterBottom
-                  style={{ lineHeight: 1.5 }}
-                >
-                  {statement.title}
-                </Typography>
-                {statement.price && (
-                  <Typography variant="h4" gutterBottom>
-                    ${statement.price}
-                  </Typography>
-                )}
-                {statement.cta && (
-                  <Button
-                    component={Link}
-                    href={statement.cta.url}
-                    variant="contained"
-                    color="secondary"
-                    className={`${classes.btn} ${classes.btnPurple}`}
-                  >
-                    {statement.cta.label}
-                  </Button>
-                )}
-              </Box>
-            )}
-            {statement.style === 'simple' && (
-              <Box py={10} textAlign="center" maxWidth={800} margin="0 auto">
-                <Typography
-                  variant="h2"
-                  gutterBottom
-                  style={{ lineHeight: 1.5 }}
-                >
-                  {statement.title}
-                </Typography>
-                {statement.price && (
-                  <Typography variant="h4" gutterBottom>
-                    ${statement.price}
-                  </Typography>
-                )}
-                {statement.cta && (
-                  <Button
-                    component={Link}
-                    href={statement.cta.url}
-                    variant="contained"
-                    color="secondary"
-                    className={classes.btn}
-                  >
-                    {statement.cta.label}
-                  </Button>
-                )}
-              </Box>
-            )}
-            {statement.style === 'box2' && (
-              <Box
-                p={5}
-                bgcolor="#CCBEDF"
-                borderRadius="0 50px 50px 50px"
-                textAlign="center"
-              >
-                <Typography variant="h2" gutterBottom>
-                  {statement.title}
-                </Typography>
-                {statement.price && (
-                  <Typography variant="h4">${statement.price}</Typography>
-                )}
-                {statement.cta && (
-                  <Button
-                    component={Link}
-                    href={statement.cta.url}
-                    variant="contained"
-                    color="secondary"
-                    className={classes.btn}
-                  >
-                    {statement.cta.label}
-                  </Button>
-                )}
-              </Box>
-            )}
-          </Box>
-        ))}
-      </Container>
-    </Layout>
-  );
-};
 
 export default IndexPage;

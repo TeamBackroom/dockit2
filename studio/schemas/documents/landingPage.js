@@ -28,7 +28,7 @@ export default {
     },
     {
       title: 'Pricing Section',
-      name: 'pricing',
+      name: 'plans',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'plan' }] }],
       validation: Rule => Rule.unique(),
