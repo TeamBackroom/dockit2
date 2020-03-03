@@ -171,7 +171,7 @@ const IndexPage = props => {
             alignItems="center"
           >
             {statement.image && (
-              <Hidden lgDown>
+              <Hidden mdDown>
                 <Box mr={10}>
                   <img
                     src={statement.image.asset.fluid.src}

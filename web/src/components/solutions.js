@@ -21,7 +21,7 @@ function Solutions({ solutions }) {
         <Grid container spacing={10}>
           {solutions.map(solution => (
             <Grid key={solution.id} item xs={12} lg={4}>
-              <Box textAlign="center" maxWidth={320}>
+              <Box textAlign="center" maxWidth={320} mx="auto">
                 <img
                   src={solution.image.asset.fluid.src}
                   alt={solution.image.alt}

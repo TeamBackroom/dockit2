@@ -48,6 +48,10 @@ const useStyles = makeStyles(theme => ({
   inner: {
     backgroundColor: theme.palette.common.white,
   },
+  logo: {
+    maxWidth: '100%',
+    minWidth: 326,
+  },
 }));
 
 function Header({ logo }) {
@@ -59,7 +63,11 @@ function Header({ logo }) {
         <Box display="flex" className={classes.inner}>
           <header className={classes.header}>
             {logo && logo.asset && (
-              <img src={logo.asset.fluid.src} alt={logo.alt} />
+              <img
+                src={logo.asset.fluid.src}
+                alt={logo.alt}
+                className={classes.logo}
+              />
             )}
           </header>
           <Box className={classes.headerRight}></Box>
