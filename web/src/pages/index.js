@@ -356,7 +356,7 @@ const IndexPage = props => {
                     to={statement.cta.url}
                     variant="contained"
                     color="secondary"
-                    className={`${classes.btn} ${classes.btnPurple}`}
+                    className={classes.btn}
                   >
                     {statement.cta.label}
                   </Button>
@@ -382,7 +382,7 @@ const IndexPage = props => {
                     to={statement.cta.url}
                     variant="contained"
                     color="secondary"
-                    className={`${classes.btn} ${classes.btnPurple}`}
+                    className={classes.btn}
                   >
                     {statement.cta.label}
                   </Button>
