@@ -299,7 +299,7 @@ const IndexPage = props => {
         </Container>
       </Box>
       {/* screenshot */}
-      {screenshot && (
+      {screenshot && screenshot.asset && (
         <Container fixed>
           <Box mb={10}>
             <img
