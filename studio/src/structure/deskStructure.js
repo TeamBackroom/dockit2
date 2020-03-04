@@ -108,7 +108,7 @@ export default () =>
         .title('Pricing')
         .icon(MdAttachMoney)
         .schemaType('plan')
-        .child(S.documentTypeList('plan').title('Subscription PLans')),
+        .child(S.documentTypeList('plan').title('Plans')),
       S.divider(),
       S.listItem()
         .title('Blog posts')
