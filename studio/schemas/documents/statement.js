@@ -13,6 +13,12 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      title: 'Description',
+      name: 'description',
+      type: 'array',
+      of: [{ type: 'block' }],
+    },
+    {
       name: 'image',
       type: 'mainImage',
       title: 'Image',

@@ -5,7 +5,6 @@ import SEO from '../components/seo';
 import Layout from '../containers/layout';
 import {
   Container,
-  Grid,
   Box,
   Typography,
   Button,
@@ -99,7 +98,7 @@ const IndexPage = props => {
     statements,
     plans,
   } = data.page.nodes[0];
-
+  console.log(title);
   if (errors) {
     return (
       <Layout>
@@ -181,9 +180,19 @@ const IndexPage = props => {
                 </Box>
               </Hidden>
             )}
-            <Typography variant="h2" gutterBottom style={{ lineHeight: 1.5 }}>
-              <PortableText blocks={statement._rawTitle} />
-            </Typography>
+            <Box>
+              <Typography variant="h2" gutterBottom style={{ lineHeight: 1.5 }}>
+                <PortableText blocks={statement._rawTitle} />
+              </Typography>
+              {statement._rawDescription && (
+                <Typography
+                  variant="body1"
+                  style={{ lineHeight: 1.5, fontSize: '1.5rem' }}
+                >
+                  <PortableText blocks={statement._rawDescription} />
+                </Typography>
+              )}
+            </Box>
             {statement.cta && (
               <Button
                 component={Link}
@@ -276,6 +285,7 @@ export const query = graphql`
         statements {
           id
           _rawTitle
+          _rawDescription
           image {
             asset {
               fluid {
