@@ -56,7 +56,7 @@ function Pricing({ plans }) {
 
   return (
     <Container fixed id="pricing">
-      <Box mt={5} mb={10}>
+      <Box pt={5} pb={10}>
         <Grid container spacing={10}>
           {plans.map(plan => (
             <Grid item xs={12} lg={6} key={plan.id}>
@@ -107,11 +107,11 @@ function Pricing({ plans }) {
                     ${plan.annualPrice}
                   </Typography>
                   <Typography variant="h6" component="div" gutterBottom>
-                    /Annual
+                    annual payment
                   </Typography>
                   <br />
                   <Typography variant="body1">
-                    ${plan.monthlyPrice} month to month
+                    ${plan.monthlyPrice} monthly payment
                   </Typography>
                 </Box>
               </Box>

@@ -18,6 +18,7 @@ import HeroSection from '../components/hero';
 import Feature from '../components/feature';
 import Solutions from '../components/solutions';
 import Pricing from '../components/pricing';
+import HubspotForm from 'react-hubspot-form';
 
 const useStyles = makeStyles({
   h2: {
@@ -83,6 +84,11 @@ const useStyles = makeStyles({
       transform: 'translateX(-40px)',
     },
   },
+  statement: {
+    '& p': {
+      margin: 0,
+    },
+  },
 });
 
 const IndexPage = props => {
@@ -97,6 +103,7 @@ const IndexPage = props => {
     screenshot,
     statements,
     plans,
+    formSection,
   } = data.page.nodes[0];
   console.log(title);
   if (errors) {
@@ -163,11 +170,12 @@ const IndexPage = props => {
         {statements.map(statement => (
           <Box
             key={statement.id}
-            my={5}
+            my={10}
             textAlign={statement.image ? 'left' : 'center'}
             margin="0 auto"
             display={statement.image ? 'flex' : 'block'}
             alignItems="center"
+            className={classes.statement}
           >
             {statement.image && (
               <Hidden mdDown>
@@ -187,6 +195,7 @@ const IndexPage = props => {
               {statement._rawDescription && (
                 <Typography
                   variant="body1"
+                  component="div"
                   style={{ lineHeight: 1.5, fontSize: '1.5rem' }}
                 >
                   <PortableText blocks={statement._rawDescription} />
@@ -206,6 +215,20 @@ const IndexPage = props => {
             )}
           </Box>
         ))}
+        {formSection.hubspotFormId && (
+          <Box maxWidth={500} mt={5} mx="auto">
+            <Box mb={2}>
+              <Typography variant="h2" gutterBottom style={{ lineHeight: 1.5 }}>
+                {formSection.title}
+              </Typography>
+            </Box>
+            <HubspotForm
+              portalId={process.env.HUBSPOT_PORTAL_ID}
+              formId={formSection.hubspotFormId}
+              loading={<div></div>}
+            />
+          </Box>
+        )}
       </Container>
     </Layout>
   );
@@ -306,6 +329,10 @@ export const query = graphql`
           annualPrice
           monthlyPrice
           comingSoon
+        }
+        formSection {
+          title
+          hubspotFormId
         }
       }
     }

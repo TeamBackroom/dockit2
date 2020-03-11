@@ -26,6 +26,7 @@ import authorReference from './objects/authorReference';
 import navItem from './objects/navItem';
 import heroSection from './objects/heroSection';
 import featuresSection from './objects/featuresSection';
+import formSection from './objects/formSection';
 import seo from './objects/seo';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -56,6 +57,7 @@ export default createSchema({
     navItem,
     heroSection,
     featuresSection,
+    formSection,
     seo,
 
     // When added to this list, object types can be used as

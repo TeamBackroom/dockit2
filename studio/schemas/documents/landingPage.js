@@ -47,6 +47,11 @@ export default {
       options: { collapsible: true, collapsed: true },
     },
     {
+      title: 'Form Section',
+      name: 'formSection',
+      type: 'formSection',
+    },
+    {
       name: 'seo',
       title: 'SEO',
       type: 'seo',
