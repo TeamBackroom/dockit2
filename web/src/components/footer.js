@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Box } from '@material-ui/core';
+import PortableText from '../components/portableText';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -24,7 +25,9 @@ const Footer = props => {
             className={classes.logo}
           />
         )}
-        <Box mt={10}>{footerText}</Box>
+        <Box mt={10}>
+          <PortableText blocks={footerText} />
+        </Box>
       </Box>
     </footer>
   );

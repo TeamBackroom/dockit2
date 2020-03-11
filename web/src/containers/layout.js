@@ -36,7 +36,7 @@ function LayoutContainer(props) {
               }
             }
           }
-          footerText: footer
+          _rawFooter
         }
       }
     }
@@ -67,7 +67,7 @@ function LayoutContainer(props) {
           <Footer
             siteTitle={site.title}
             logo={site.logoAlt}
-            footerText={footerText}
+            footerText={site._rawFooter}
           />
         </Container>
       </ThemeProvider>
