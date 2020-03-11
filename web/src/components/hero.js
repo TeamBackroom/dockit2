@@ -29,7 +29,7 @@ function HeroSection({ heroSection }) {
     <Box my={8}>
       <Container fixed>
         <Grid container spacing={5}>
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} lg={5}>
             <Box display="flex" alignItems="center" height="100%">
               <Box>
                 <Typography variant="h1" gutterBottom>
@@ -52,7 +52,7 @@ function HeroSection({ heroSection }) {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={12} lg={6}>
+          <Grid item xs={12} lg={7}>
             <img
               src={heroSection.feature.image.asset.fluid.src}
               alt={heroSection.feature.image.alt}

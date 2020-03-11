@@ -44,7 +44,7 @@ function Feature({ feature, index }) {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} lg={5}>
+        <Grid item xs={12} lg={6}>
           <img
             src={feature.image.asset.fluid.src}
             alt={feature.image.alt}
