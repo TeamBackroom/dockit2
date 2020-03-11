@@ -20,6 +20,12 @@ export default {
       title: 'Logo Alt',
     },
     {
+      title: 'Footer',
+      name: 'footer',
+      type: 'array',
+      of: [{ type: 'block' }],
+    },
+    {
       name: 'description',
       type: 'text',
       title: 'Description',

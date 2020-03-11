@@ -36,6 +36,7 @@ function LayoutContainer(props) {
               }
             }
           }
+          footerText: footer
         }
       }
     }
@@ -63,7 +64,11 @@ function LayoutContainer(props) {
         <Header siteTitle={site.title} logo={site.logo} />
         {children}
         <Container fixed>
-          <Footer siteTitle={site.title} logo={site.logoAlt} />
+          <Footer
+            siteTitle={site.title}
+            logo={site.logoAlt}
+            footerText={footerText}
+          />
         </Container>
       </ThemeProvider>
     </>

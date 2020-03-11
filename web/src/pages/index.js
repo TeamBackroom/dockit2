@@ -118,9 +118,9 @@ const IndexPage = props => {
       {/* hero */}
       <HeroSection heroSection={heroSection} />
       {/* features */}
-      <Box py={10} bgcolor="#f6f7fb" id="features">
+      <Box py={5} bgcolor="#f6f7fb" id="features">
         <Container fixed>
-          <Box mb={10} textAlign="center">
+          <Box mb={5} textAlign="center">
             <Typography variant="h1" component="h2" gutterBottom>
               {featuresSection.title}
             </Typography>
@@ -164,7 +164,7 @@ const IndexPage = props => {
         {statements.map(statement => (
           <Box
             key={statement.id}
-            my={10}
+            my={5}
             textAlign={statement.image ? 'left' : 'center'}
             margin="0 auto"
             display={statement.image ? 'flex' : 'block'}

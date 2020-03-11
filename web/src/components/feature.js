@@ -25,7 +25,7 @@ function Feature({ feature, index }) {
   const classes = useStyles();
 
   return (
-    <Box key={feature.id} mt={index > 0 ? 10 : 0}>
+    <Box key={feature.id} mt={index > 0 ? 5 : 0}>
       <Grid
         container
         spacing={10}

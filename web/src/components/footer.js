@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 });
 
 const Footer = props => {
-  const logo = props.logo;
+  const { logo, footerText } = props;
   const classes = useStyles();
 
   return (
@@ -24,6 +24,7 @@ const Footer = props => {
             className={classes.logo}
           />
         )}
+        <Box mt={10}>{footerText}</Box>
       </Box>
     </footer>
   );
@@ -31,11 +32,13 @@ const Footer = props => {
 
 Footer.propTypes = {
   siteTitle: PropTypes.string,
+  footerText: '',
 };
 
 Footer.defaultProps = {
   siteTitle: '',
   logo: PropTypes.object,
+  footerText: PropTypes.string,
 };
 
 export default Footer;

@@ -17,7 +17,7 @@ function Solutions({ solutions }) {
 
   return (
     <Container fixed id="solutions">
-      <Box py={10}>
+      <Box py={5}>
         <Grid container spacing={10}>
           {solutions.map(solution => (
             <Grid key={solution.id} item xs={12} lg={4}>

@@ -3,10 +3,15 @@ import { Container, Grid, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PortableText from '../components/portableText';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
+  planBox: {
+    backgroundColor: theme.palette.secondary.dark,
+    color: theme.palette.common.white,
+  },
   planTitle: {
     lineHeight: 1.2,
     fontSize: '2.2rem',
+    color: theme.palette.common.white,
     '& p': {
       marginTop: 0,
       marginBottom: 10,
@@ -15,6 +20,7 @@ const useStyles = makeStyles({
   planSubtitle: {
     lineHeight: 1.2,
     fontSize: '1.5rem',
+    color: theme.palette.common.white,
     '& p': {
       marginTop: 0,
       marginBottom: 10,
@@ -36,30 +42,33 @@ const useStyles = makeStyles({
       transform: 'translateX(-40px)',
     },
   },
+  annualPrice: {
+    color: theme.palette.common.white,
+  },
   comingSoon: {
     fontSize: '1rem',
     color: '#F25523',
   },
-});
+}));
 
 function Pricing({ plans }) {
   const classes = useStyles();
 
   return (
     <Container fixed id="pricing">
-      <Box mt={10} mb="150px">
+      <Box mt={5} mb={10}>
         <Grid container spacing={10}>
           {plans.map(plan => (
             <Grid item xs={12} lg={6} key={plan.id}>
               <Box
                 p={2}
-                bgcolor="#E1F2EA"
                 borderRadius="0 50px 50px 50px"
                 textAlign="center"
                 height="100%"
                 display="flex"
                 flexDirection="column"
                 justifyContent="space-between"
+                className={classes.planBox}
               >
                 <Typography
                   variant="h3"
@@ -90,7 +99,11 @@ function Pricing({ plans }) {
                   <PortableText blocks={plan._rawDescription} />
                 </Box>
                 <Box className={classes.planPrice}>
-                  <Typography variant="h1" component="div">
+                  <Typography
+                    variant="h1"
+                    component="div"
+                    className={classes.annualPrice}
+                  >
                     ${plan.annualPrice}
                   </Typography>
                   <Typography variant="h6" component="div" gutterBottom>

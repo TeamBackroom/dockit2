@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '0 0 30px 0',
   },
   headerRight: {
-    backgroundColor: '#BCE3D1',
+    backgroundColor: theme.palette.secondary.main,
     borderRadius: '0 0 0 30px',
     width: '100%',
     marginLeft: 10,
@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     '&::after': {
       content: '""',
       display: 'block',
-      backgroundColor: '#BCE3D1',
+      backgroundColor: theme.palette.secondary.main,
       position: 'absolute',
       top: 0,
       right: 0,
