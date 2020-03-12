@@ -20,5 +20,12 @@ module.exports = {
         overlayDrafts: !isProd,
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-160358849-1',
+        head: true,
+      },
+    },
   ],
 };
