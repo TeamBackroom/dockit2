@@ -107,11 +107,15 @@ function Pricing({ plans }) {
                     ${plan.annualPrice}
                   </Typography>
                   <Typography variant="h6" component="div" gutterBottom>
-                    annual payment
+                    per user / per month
+                    <br />
+                    billed annually
                   </Typography>
                   <br />
                   <Typography variant="body1">
-                    ${plan.monthlyPrice} monthly payment
+                    ${plan.monthlyPrice} per user / per month
+                    <br />
+                    billed monthly
                   </Typography>
                 </Box>
               </Box>
