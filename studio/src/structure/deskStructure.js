@@ -85,6 +85,16 @@ export default () =>
             .documentId('landingPage'),
         ),
       S.listItem()
+        .title('Pricing Page')
+        .icon(MdInsertDriveFile)
+        .child(
+          S.editor()
+            .id('pricingPage')
+            .schemaType('pricingPage')
+            .documentId('pricingPage'),
+        ),
+      S.divider(),
+      S.listItem()
         .title('Features')
         .icon(MdSettingsInputComponent)
         .schemaType('feature')
@@ -137,6 +147,7 @@ export default () =>
             'post',
             'siteSettings',
             'landingPage',
+            'pricingPage',
             'feature',
             'cta',
             'solution',

@@ -105,7 +105,7 @@ const IndexPage = props => {
     plans,
     formSection,
   } = data.page.nodes[0];
-  console.log(title);
+
   if (errors) {
     return (
       <Layout>

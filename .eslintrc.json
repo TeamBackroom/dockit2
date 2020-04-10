@@ -1,15 +1,13 @@
 {
   "parser": "babel-eslint",
-  "extends": [
-    "airbnb",
-    "prettier",
-    "plugin:prettier/recommended",
-    "prettier/react"
-  ],
+  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
   "plugins": ["react", "jsx-a11y", "import", "react-hooks", "prettier"],
   "env": {
     "browser": true,
-    "es6": true
+    "commonjs": true,
+    "es6": true,
+    "jest": true,
+    "node": true
   },
   "globals": {
     "Atomics": "readonly",
@@ -25,15 +23,16 @@
     "sourceType": "module"
   },
   "rules": {
+    "jsx-a11y/href-no-hash": ["off"],
     "no-console": "off",
     "react/jsx-filename-extension": [
-      1,
+      "warn",
       {
         "extensions": [".js", ".jsx"]
       }
     ],
     "jsx-a11y/label-has-associated-control": [
-      1,
+      "warn",
       {
         "controlComponents": ["Field"]
       }
@@ -42,6 +41,27 @@
     "react/forbid-prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "prettier/prettier": "error"
+    "react/jsx-props-no-spreading": "off",
+    "prettier/prettier": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 80,
+        "tabWidth": 2,
+        "comments": 80,
+        "ignoreComments": false,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ]
   }
 }

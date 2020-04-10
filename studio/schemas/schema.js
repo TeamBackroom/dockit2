@@ -10,6 +10,7 @@ import category from './documents/category';
 import post from './documents/post';
 import siteSettings from './documents/siteSettings';
 import landingPage from './documents/landingPage';
+import pricingPage from './documents/pricingPage';
 import feature from './documents/feature';
 import cta from './documents/cta';
 import solution from './documents/solution';
@@ -25,6 +26,7 @@ import mainImage from './objects/mainImage';
 import authorReference from './objects/authorReference';
 import navItem from './objects/navItem';
 import heroSection from './objects/heroSection';
+import heroSimple from './objects/heroSimple';
 import featuresSection from './objects/featuresSection';
 import formSection from './objects/formSection';
 import seo from './objects/seo';
@@ -45,6 +47,7 @@ export default createSchema({
     nav,
     plan,
     landingPage,
+    pricingPage,
     siteSettings,
     post,
     category,
@@ -56,6 +59,7 @@ export default createSchema({
     excerptPortableText,
     navItem,
     heroSection,
+    heroSimple,
     featuresSection,
     formSection,
     seo,
