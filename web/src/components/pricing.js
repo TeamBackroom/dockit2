@@ -10,8 +10,8 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.common.white,
   },
   planTitle: {
+    zoom: '110%',
     lineHeight: 1,
-    fontSize: '3rem',
     color: theme.palette.common.white,
     '& p': {
       marginTop: 0,
@@ -20,7 +20,6 @@ const useStyles = makeStyles(theme => ({
   },
   planSubtitle: {
     lineHeight: 1.2,
-    fontSize: '1.6rem',
     color: theme.palette.common.white,
     '& p': {
       marginTop: 0,
@@ -28,6 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   planPrice: {
+    zoom: '110%',
     position: 'relative',
     paddingTop: 20,
     marginTop: 20,
@@ -44,12 +44,11 @@ const useStyles = makeStyles(theme => ({
     },
   },
   annualPrice: {
-    fontSize: '4rem',
     color: theme.palette.common.white,
   },
   comingSoon: {
-    fontSize: '1rem',
     color: '#F15623',
+    fontWeight: 'bold',
   },
 }));
 
@@ -73,7 +72,7 @@ function Pricing({ plans }) {
                 className={classes.planBox}
               >
                 <Typography
-                  variant="h3"
+                  variant="h6"
                   gutterBottom
                   className={classes.comingSoon}
                 >
@@ -85,7 +84,7 @@ function Pricing({ plans }) {
                 </Typography>
                 <Box>
                   <Typography
-                    variant="h2"
+                    variant="h1"
                     gutterBottom
                     className={classes.planTitle}
                   >

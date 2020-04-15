@@ -4,11 +4,11 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Helmet from 'react-helmet';
+import { Container } from '@material-ui/core';
+import { useStaticQuery, graphql } from 'gatsby';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import theme from '../components/theme';
-import { Container } from '@material-ui/core';
-import { useStaticQuery, graphql } from 'gatsby';
 
 function LayoutContainer(props) {
   const { children } = props;

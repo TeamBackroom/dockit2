@@ -4,6 +4,7 @@ require('dotenv').config({
 });
 
 const clientConfig = require('./client-config');
+
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
@@ -32,16 +33,16 @@ module.exports = {
       options: {
         id: 'GTM-K59L8NQ',
 
-        //// Include GTM in development.
-        //// Defaults to false meaning GTM will only be loaded in production.
+        // // Include GTM in development.
+        // // Defaults to false meaning GTM will only be loaded in production.
         includeInDevelopment: false,
 
-        //// datalayer to be set before GTM is loaded
-        //// should be an object or a function that is executed in the browser
-        //// Defaults to null
+        // // datalayer to be set before GTM is loaded
+        // // should be an object or a function that is executed in the browser
+        // // Defaults to null
         // defaultDataLayer: { platform: 'gatsby' },
 
-        //// Specify optional GTM environment details.
+        // // Specify optional GTM environment details.
         // gtmAuth: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING',
         // gtmPreview: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME',
         // dataLayerName: 'YOUR_DATA_LAYER_NAME',
