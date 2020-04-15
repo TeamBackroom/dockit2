@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Grid, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import PortableText from '../components/portableText';
+import PortableText from './portableText';
 
 const useStyles = makeStyles(theme => ({
   planBox: {
@@ -9,8 +9,8 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.common.white,
   },
   planTitle: {
-    lineHeight: 1.2,
-    fontSize: '2.2rem',
+    lineHeight: 1,
+    fontSize: '3rem',
     color: theme.palette.common.white,
     '& p': {
       marginTop: 0,
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
   planSubtitle: {
     lineHeight: 1.2,
-    fontSize: '1.5rem',
+    fontSize: '1.6rem',
     color: theme.palette.common.white,
     '& p': {
       marginTop: 0,
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
       display: 'block',
       width: 80,
       height: 5,
-      backgroundColor: '#F25523',
+      backgroundColor: '#F15623',
       position: 'absolute',
       top: 0,
       left: '50%',
@@ -43,11 +43,12 @@ const useStyles = makeStyles(theme => ({
     },
   },
   annualPrice: {
+    fontSize: '4rem',
     color: theme.palette.common.white,
   },
   comingSoon: {
     fontSize: '1rem',
-    color: '#F25523',
+    color: '#F15623',
   },
 }));
 
@@ -83,7 +84,7 @@ function Pricing({ plans }) {
                 </Typography>
                 <Box>
                   <Typography
-                    variant="h3"
+                    variant="h2"
                     gutterBottom
                     className={classes.planTitle}
                   >
@@ -96,7 +97,11 @@ function Pricing({ plans }) {
                   >
                     <PortableText blocks={plan._rawSubtitle} />
                   </Typography>
-                  <PortableText blocks={plan._rawDescription} />
+                  <Box px={2}>
+                    <Typography variant="h5">
+                      <PortableText blocks={plan._rawDescription} />
+                    </Typography>
+                  </Box>
                 </Box>
                 <Box className={classes.planPrice}>
                   <Typography
@@ -106,7 +111,7 @@ function Pricing({ plans }) {
                   >
                     ${plan.annualPrice}
                   </Typography>
-                  <Typography variant="h6" component="div" gutterBottom>
+                  <Typography variant="h5" component="div" gutterBottom>
                     per user / per month
                     <br />
                     billed annually

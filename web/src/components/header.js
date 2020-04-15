@@ -1,8 +1,8 @@
-// import { Link } from "gatsby"
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Box, Container } from '@material-ui/core';
+import { Box, Container, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'gatsby';
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -19,6 +19,10 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '0 0 0 30px',
     width: '100%',
     marginLeft: 10,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingRight: theme.spacing(5),
   },
   wrapper: {
     position: 'relative',
@@ -52,6 +56,20 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '100%',
     minWidth: 326,
   },
+  navItem: {
+    marginRight: theme.spacing(3),
+    textTransform: 'capitalize',
+    color: theme.palette.common.white,
+    borderRadius: 30,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  btn: {
+    backgroundColor: theme.palette.primary.main,
+    '&:hover': {
+      backgroundColor: theme.palette.primary.dark,
+    },
+  },
 }));
 
 function Header({ logo }) {
@@ -63,14 +81,33 @@ function Header({ logo }) {
         <Box display="flex" className={classes.inner}>
           <header className={classes.header}>
             {logo && logo.asset && (
-              <img
-                src={logo.asset.fluid.src}
-                alt={logo.alt}
-                className={classes.logo}
-              />
+              <Link to="/">
+                <img
+                  src={logo.asset.fluid.src}
+                  alt={logo.alt}
+                  className={classes.logo}
+                />
+              </Link>
             )}
           </header>
-          <Box className={classes.headerRight}></Box>
+          <Box className={classes.headerRight}>
+            <Button
+              variant="text"
+              component={Link}
+              to="/pricing"
+              className={classes.navItem}
+            >
+              Pricing
+            </Button>
+            <Button
+              variant="contained"
+              component={Link}
+              to="/#form"
+              className={`${classes.navItem} ${classes.btn}`}
+            >
+              Get Demo
+            </Button>
+          </Box>
         </Box>
       </Container>
     </Box>

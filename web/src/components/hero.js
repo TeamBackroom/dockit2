@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import {
   Container,
@@ -24,6 +25,8 @@ const useStyles = makeStyles({
 
 function HeroSection({ heroSection }) {
   const classes = useStyles();
+  const { title, description, image } = heroSection.feature;
+  const { url, label } = heroSection.cta;
 
   return (
     <Box my={8}>
@@ -33,29 +36,32 @@ function HeroSection({ heroSection }) {
             <Box display="flex" alignItems="center" height="100%">
               <Box>
                 <Typography variant="h1" gutterBottom>
-                  {heroSection.feature.title}
+                  {title}
                 </Typography>
-                <Typography variant="body1">
-                  {heroSection.feature.description}
-                </Typography>
+                <Typography variant="body1">{description}</Typography>
                 {heroSection.cta && (
                   <Button
                     component={Link}
-                    href={heroSection.cta.url}
+                    href={url}
                     variant="contained"
                     color="secondary"
                     className={classes.btn}
                   >
-                    {heroSection.cta.label}
+                    {label}
                   </Button>
                 )}
               </Box>
             </Box>
           </Grid>
           <Grid item xs={12} lg={7}>
+            {image.caption && (
+              <Box textAlign="center" mb={2}>
+                <Typography variant="h3">{image.caption}</Typography>
+              </Box>
+            )}
             <img
-              src={heroSection.feature.image.asset.fluid.src}
-              alt={heroSection.feature.image.alt}
+              src={image.asset.fluid.src}
+              alt={image.alt}
               style={{ width: '100%', display: 'inherit' }}
             />
           </Grid>
@@ -64,5 +70,13 @@ function HeroSection({ heroSection }) {
     </Box>
   );
 }
+
+HeroSection.propTypes = {
+  heroSection: PropTypes.object,
+};
+
+HeroSection.defaultProps = {
+  heroSection: null,
+};
 
 export default HeroSection;

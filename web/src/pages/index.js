@@ -1,8 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { graphql } from 'gatsby';
-import GraphQLErrorList from '../components/graphql-error-list';
-import SEO from '../components/seo';
-import Layout from '../containers/layout';
 import {
   Container,
   Box,
@@ -12,13 +10,14 @@ import {
   Hidden,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import theme from '../components/theme';
+import HubspotForm from 'react-hubspot-form';
+import GraphQLErrorList from '../components/graphql-error-list';
+import SEO from '../components/seo';
+import Layout from '../containers/layout';
 import PortableText from '../components/portableText';
 import HeroSection from '../components/hero';
 import Feature from '../components/feature';
 import Solutions from '../components/solutions';
-import Pricing from '../components/pricing';
-import HubspotForm from 'react-hubspot-form';
 
 const useStyles = makeStyles({
   h2: {
@@ -31,7 +30,7 @@ const useStyles = makeStyles({
       display: 'block',
       width: 120,
       height: 5,
-      backgroundColor: '#F25523',
+      backgroundColor: '#F15623',
       position: 'absolute',
       bottom: 0,
       left: 0,
@@ -45,43 +44,6 @@ const useStyles = makeStyles({
     padding: '2px 30px',
     '&:hover': {
       textDecoration: 'none',
-    },
-  },
-  btnPurple: {
-    backgroundColor: '#5F5697',
-    color: theme.palette.common.white,
-    '&:hover': {
-      backgroundColor: '#4A4471',
-    },
-  },
-  simple: {},
-  box1: {
-    padding: 5,
-    bgcolor: '#BCE3D1',
-    borderRadius: '0 50px 50px 50px',
-    textAlign: 'center',
-  },
-  planTitle: {
-    lineHeight: 1.2,
-    '& p': {
-      marginTop: 0,
-      marginBottom: 10,
-    },
-  },
-  planPrice: {
-    position: 'relative',
-    paddingTop: 20,
-    marginTop: 20,
-    '&::before': {
-      content: '""',
-      display: 'block',
-      width: 80,
-      height: 5,
-      backgroundColor: '#F25523',
-      position: 'absolute',
-      top: 0,
-      left: '50%',
-      transform: 'translateX(-40px)',
     },
   },
   statement: {
@@ -102,7 +64,6 @@ const IndexPage = props => {
     solutions,
     screenshot,
     statements,
-    plans,
     formSection,
   } = data.page.nodes[0];
 
@@ -164,7 +125,7 @@ const IndexPage = props => {
         </Container>
       )}
       {/* pricing */}
-      <Pricing plans={plans} />
+      {/* <Pricing plans={plans} /> */}
       {/* statements */}
       <Container fixed>
         {statements.map(statement => (
@@ -193,11 +154,7 @@ const IndexPage = props => {
                 <PortableText blocks={statement._rawTitle} />
               </Typography>
               {statement._rawDescription && (
-                <Typography
-                  variant="body1"
-                  component="div"
-                  style={{ lineHeight: 1.5, fontSize: '1.5rem' }}
-                >
+                <Typography variant="body1" component="div">
                   <PortableText blocks={statement._rawDescription} />
                 </Typography>
               )}
@@ -225,7 +182,7 @@ const IndexPage = props => {
             <HubspotForm
               portalId={process.env.GATSBY_HUBSPOT_PORTAL_ID}
               formId={formSection.hubspotFormId}
-              loading={<div></div>}
+              loading={<div />}
             />
           </Box>
         )}
@@ -338,5 +295,15 @@ export const query = graphql`
     }
   }
 `;
+
+IndexPage.propTypes = {
+  data: PropTypes.object,
+  errors: PropTypes.arrayOf(PropTypes.object),
+};
+
+IndexPage.defaultProps = {
+  data: null,
+  errors: null,
+};
 
 export default IndexPage;
