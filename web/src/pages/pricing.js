@@ -1,23 +1,12 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import {
-  Container,
-  Box,
-  Typography,
-  Button,
-  Link,
-  Hidden,
-} from '@material-ui/core';
+import { Container, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import HubspotForm from 'react-hubspot-form';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
 import theme from '../components/theme';
 import PortableText from '../components/portableText';
-import HeroSection from '../components/hero';
-import Feature from '../components/feature';
-import Solutions from '../components/solutions';
 import Pricing from '../components/pricing';
 
 const useStyles = makeStyles({

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Container, Grid, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -131,5 +132,13 @@ function Pricing({ plans }) {
     </Container>
   );
 }
+
+Pricing.propTypes = {
+  plans: PropTypes.arrayOf(PropTypes.object),
+};
+
+Pricing.defaultProps = {
+  plans: [],
+};
 
 export default Pricing;
