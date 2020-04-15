@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Box } from '@material-ui/core';
-import PortableText from '../components/portableText';
 import { makeStyles } from '@material-ui/core/styles';
+import PortableText from './portableText';
 
 const useStyles = makeStyles({
   logo: {
@@ -34,14 +34,13 @@ const Footer = props => {
 };
 
 Footer.propTypes = {
-  siteTitle: PropTypes.string,
-  footerText: '',
+  logo: PropTypes.object,
+  footerText: PropTypes.arrayOf(PropTypes.object),
 };
 
 Footer.defaultProps = {
-  siteTitle: '',
-  logo: PropTypes.object,
-  footerText: PropTypes.string,
+  logo: '',
+  footerText: '',
 };
 
 export default Footer;
