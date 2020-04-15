@@ -5,6 +5,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'gatsby';
 
 const useStyles = makeStyles(theme => ({
+  container: {
+    [theme.breakpoints.down('sm')]: {
+      padding: 0,
+    },
+  },
   header: {
     fontFamily: 'Rubik',
     fontSize: '3rem',
@@ -13,6 +18,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.main,
     padding: '30px 30px 10px 0',
     borderRadius: '0 0 30px 0',
+    [theme.breakpoints.down('sm')]: {
+      borderRadius: 0,
+      paddingLeft: 24,
+    },
   },
   headerRight: {
     backgroundColor: theme.palette.secondary.main,
@@ -23,6 +32,11 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'flex-end',
     paddingRight: theme.spacing(5),
+    [theme.breakpoints.down('sm')]: {
+      borderRadius: 0,
+      margin: 0,
+      padding: 24,
+    },
   },
   wrapper: {
     position: 'relative',
@@ -51,6 +65,10 @@ const useStyles = makeStyles(theme => ({
   },
   inner: {
     backgroundColor: theme.palette.common.white,
+    display: 'flex',
+    [theme.breakpoints.down('sm')]: {
+      display: 'block',
+    },
   },
   logo: {
     maxWidth: '100%',
@@ -77,8 +95,8 @@ function Header({ logo }) {
 
   return (
     <Box className={classes.wrapper}>
-      <Container>
-        <Box display="flex" className={classes.inner}>
+      <Container className={classes.container}>
+        <Box className={classes.inner}>
           <header className={classes.header}>
             {logo && logo.asset && (
               <Link to="/">
