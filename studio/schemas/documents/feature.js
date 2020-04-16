@@ -21,5 +21,10 @@ export default {
       name: 'image',
       type: 'mainImage',
     },
+    {
+      title: 'Video',
+      name: 'video',
+      type: 'string',
+    },
   ],
 };

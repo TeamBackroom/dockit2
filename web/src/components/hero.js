@@ -9,6 +9,7 @@ import {
   Link,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import ReactPlayer from 'react-player';
 
 const useStyles = makeStyles({
   btn: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
 
 function HeroSection({ heroSection }) {
   const classes = useStyles();
-  const { title, description, image } = heroSection.feature;
+  const { title, description, image, video } = heroSection.feature;
   const { url, label } = heroSection.cta;
 
   return (
@@ -54,16 +55,22 @@ function HeroSection({ heroSection }) {
             </Box>
           </Grid>
           <Grid item xs={12} lg={7}>
-            {image.caption && (
-              <Box textAlign="center" mb={2}>
-                <Typography variant="h3">{image.caption}</Typography>
-              </Box>
+            {video ? (
+              <ReactPlayer url={video} playing={false} controls light />
+            ) : (
+              <>
+                {image.caption && (
+                  <Box textAlign="center" mb={2}>
+                    <Typography variant="h3">{image.caption}</Typography>
+                  </Box>
+                )}
+                <img
+                  src={image.asset.fluid.src}
+                  alt={image.alt}
+                  style={{ width: '100%', display: 'inherit' }}
+                />
+              </>
             )}
-            <img
-              src={image.asset.fluid.src}
-              alt={image.alt}
-              style={{ width: '100%', display: 'inherit' }}
-            />
           </Grid>
         </Grid>
       </Container>
