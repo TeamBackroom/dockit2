@@ -22,9 +22,9 @@ export default {
       type: 'mainImage',
     },
     {
-      title: 'Video URL',
-      name: 'video',
-      type: 'string',
-    },
+      title: "Video",
+      name: "video",
+      type: "video",
+    }
   ],
 };
