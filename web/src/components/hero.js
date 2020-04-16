@@ -56,7 +56,13 @@ function HeroSection({ heroSection }) {
           </Grid>
           <Grid item xs={12} lg={7}>
             {video ? (
-              <ReactPlayer url={video} playing={false} controls light />
+              <ReactPlayer
+                url={video}
+                playing={false}
+                controls
+                light
+                width="100%"
+              />
             ) : (
               <>
                 {image.caption && (

@@ -22,7 +22,7 @@ export default {
       type: 'mainImage',
     },
     {
-      title: 'Video',
+      title: 'Video URL',
       name: 'video',
       type: 'string',
     },
