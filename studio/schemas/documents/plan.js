@@ -46,6 +46,11 @@ export default {
       name: 'comingSoon',
       type: 'boolean',
     },
+    {
+      title: 'Coming Soon Text',
+      name: 'comingSoonText',
+      type: 'string',
+    },
   ],
   preview: {
     select: {
