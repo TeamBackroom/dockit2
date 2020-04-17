@@ -207,8 +207,22 @@ export const query = graphql`
           keywords
         }
         heroSection {
+          title
           feature {
             description
+            video {
+              file {
+                asset {
+                  assetId
+                  playbackId
+                  status
+                  _key
+                  _type
+                  filename
+                  thumbTime
+                }
+              }
+            }
             image {
               caption
               asset {

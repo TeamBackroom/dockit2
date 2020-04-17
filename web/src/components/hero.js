@@ -9,7 +9,7 @@ import {
   Link,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import ReactPlayer from 'react-player';
+import SanityMuxPlayer from 'sanity-mux-player';
 
 const useStyles = makeStyles({
   btn: {
@@ -26,18 +26,29 @@ const useStyles = makeStyles({
 
 function HeroSection({ heroSection }) {
   const classes = useStyles();
-  const { title, description, image, video } = heroSection.feature;
+  const { title } = heroSection;
+  const {
+    title: featureTitle,
+    description,
+    image,
+    video,
+  } = heroSection.feature;
   const { url, label } = heroSection.cta;
 
   return (
     <Box my={8}>
       <Container fixed>
+        {title && (
+          <Box textAlign="center" mb={7}>
+            <Typography variant="h1">{title}</Typography>
+          </Box>
+        )}
         <Grid container spacing={5}>
           <Grid item xs={12} lg={5}>
-            <Box display="flex" alignItems="center" height="100%">
+            <Box display="flex" alignItems="flex-start" height="100%">
               <Box>
-                <Typography variant="h1" gutterBottom>
-                  {title}
+                <Typography variant="h2" gutterBottom>
+                  {featureTitle}
                 </Typography>
                 <Typography variant="body1">{description}</Typography>
                 {heroSection.cta && (
@@ -56,26 +67,24 @@ function HeroSection({ heroSection }) {
           </Grid>
           <Grid item xs={12} lg={7}>
             {video ? (
-              <ReactPlayer
-                url={video}
-                playing={false}
-                controls
-                light
+              <SanityMuxPlayer
+                assetDocument={video.file.asset}
+                autoload
+                autoplay={false}
+                // className={string}
+                height={400}
+                loop={false}
+                muted={false}
+                showControls={false}
+                style={{}}
                 width="100%"
               />
             ) : (
-              <>
-                {image.caption && (
-                  <Box textAlign="center" mb={2}>
-                    <Typography variant="h3">{image.caption}</Typography>
-                  </Box>
-                )}
-                <img
-                  src={image.asset.fluid.src}
-                  alt={image.alt}
-                  style={{ width: '100%', display: 'inherit' }}
-                />
-              </>
+              <img
+                src={image.asset.fluid.src}
+                alt={image.alt}
+                style={{ width: '100%', display: 'inherit' }}
+              />
             )}
           </Grid>
         </Grid>

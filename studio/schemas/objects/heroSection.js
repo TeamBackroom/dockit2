@@ -4,6 +4,11 @@ export default {
   type: 'object',
   fields: [
     {
+      title: 'Title',
+      name: 'title',
+      type: 'string',
+    },
+    {
       title: 'Feature',
       name: 'feature',
       type: 'reference',
