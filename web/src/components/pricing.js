@@ -68,7 +68,7 @@ function Pricing({ plans }) {
                 height="100%"
                 display="flex"
                 flexDirection="column"
-                justifyContent="space-between"
+                justifyContent="flex-start"
                 className={classes.planBox}
               >
                 <Typography
@@ -103,26 +103,24 @@ function Pricing({ plans }) {
                     </Typography>
                   </Box>
                 </Box>
-                <Box className={classes.planPrice}>
-                  <Typography
-                    variant="h1"
-                    component="div"
-                    className={classes.annualPrice}
-                  >
-                    ${plan.annualPrice}
-                  </Typography>
-                  <Typography variant="h5" component="div" gutterBottom>
-                    per user / per month
+                {plan.annualPrice && (
+                  <Box className={classes.planPrice}>
+                    <Typography
+                      variant="h1"
+                      component="div"
+                      className={classes.annualPrice}
+                    >
+                      ${plan.annualPrice}
+                    </Typography>
+                    <Typography variant="h5" component="div" gutterBottom>
+                      <PortableText blocks={plan._annualPriceDescription} />
+                    </Typography>
                     <br />
-                    billed annually
-                  </Typography>
-                  <br />
-                  <Typography variant="body1">
-                    ${plan.monthlyPrice} per user / per month
-                    <br />
-                    billed monthly
-                  </Typography>
-                </Box>
+                    <Typography variant="body1">
+                      <PortableText blocks={plan._monthlyPriceDescription} />
+                    </Typography>
+                  </Box>
+                )}
               </Box>
             </Grid>
           ))}

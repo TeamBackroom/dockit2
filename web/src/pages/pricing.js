@@ -116,16 +116,24 @@ const PricingPage = props => {
             {title}
           </Typography>
           {/* hero */}
-          <Typography variant="h2" gutterBottom>
-            {heroSimple.title}
-          </Typography>
-          <Typography variant="h5">
-            {heroSimple.description[0].children[0].text}
-          </Typography>
+          {heroSimple && (
+            <>
+              <Typography variant="h2" gutterBottom>
+                {heroSimple.title}
+              </Typography>
+              <Typography variant="h5">
+                {heroSimple.description[0].children[0].text}
+              </Typography>
+            </>
+          )}
         </Box>
-        <Box mt={10}>
-          <Typography variant="h5">{plansTitle[0].children[0].text}</Typography>
-        </Box>
+        {plansTitle && (
+          <Box mt={10}>
+            <Typography variant="h5">
+              {plansTitle[0].children[0].text}
+            </Typography>
+          </Box>
+        )}
       </Container>
       {/* plans */}
       <Pricing plans={plans} />
