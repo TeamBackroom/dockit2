@@ -1,8 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import GraphQLErrorList from '../components/graphql-error-list';
-import SEO from '../components/seo';
-import Layout from '../containers/layout';
 import {
   Container,
   Box,
@@ -12,13 +9,16 @@ import {
   Hidden,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import HubspotForm from 'react-hubspot-form';
+import GraphQLErrorList from '../components/graphql-error-list';
+import SEO from '../components/seo';
+import Layout from '../containers/layout';
 import theme from '../components/theme';
 import PortableText from '../components/portableText';
 import HeroSection from '../components/hero';
 import Feature from '../components/feature';
 import Solutions from '../components/solutions';
 import Pricing from '../components/pricing';
-import HubspotForm from 'react-hubspot-form';
 
 const useStyles = makeStyles({
   heading: {
@@ -132,11 +132,13 @@ const PricingPage = props => {
             {heroSimple.description[0].children[0].text}
           </Typography>
         </Box>
-        <Box mt={10}>
-          <Typography variant="h5">
-            {plansTitle[0].children[0].text}
-          </Typography>
-        </Box>
+        {plansTitle && (
+          <Box mt={10}>
+            <Typography variant="h5">
+              {plansTitle[0].children[0].text}
+            </Typography>
+          </Box>
+        )}
       </Container>
       {/* plans */}
       <Pricing plans={plans} />
@@ -148,13 +150,11 @@ const PricingPage = props => {
         {/* features */}
         {features.map((feature, index) => (
           <Box key={feature.id} mt={10}>
-          <Typography variant="h3" className={classes.heading}>
-            {feature.title}
-          </Typography>
-          <Typography variant="body1">
-            {feature.description}
-          </Typography>
-        </Box>
+            <Typography variant="h3" className={classes.heading}>
+              {feature.title}
+            </Typography>
+            <Typography variant="body1">{feature.description}</Typography>
+          </Box>
         ))}
       </Container>
     </Layout>

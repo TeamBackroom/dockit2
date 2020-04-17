@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Grid, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import PortableText from '../components/portableText';
+import PortableText from './portableText';
 
 const useStyles = makeStyles(theme => ({
   planBox: {
