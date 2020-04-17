@@ -97,14 +97,14 @@ const PricingPage = props => {
 
   if (errors) {
     return (
-      <Layout>
+      <Layout currentPage="pricing">
         <GraphQLErrorList errors={errors} />
       </Layout>
     );
   }
 
   return (
-    <Layout>
+    <Layout currentPage="pricing">
       <SEO
         title={title}
         description={seo ? seo.description : ''}
@@ -112,11 +112,11 @@ const PricingPage = props => {
       />
       <Container>
         <Box mt={10}>
-          <Typography variant="h3" component="h1" className={classes.title}>
+          <Typography variant="h1" className={classes.title}>
             {title}
           </Typography>
           {/* hero */}
-          <Typography variant="h1" gutterBottom>
+          <Typography variant="h2" gutterBottom>
             {heroSimple.title}
           </Typography>
           <Typography variant="h5">

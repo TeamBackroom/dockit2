@@ -75,6 +75,7 @@ const useStyles = makeStyles(theme => ({
     minWidth: 326,
   },
   navItem: {
+    fontSize: '1.3rem',
     marginRight: theme.spacing(3),
     textTransform: 'capitalize',
     color: theme.palette.common.white,
@@ -88,9 +89,15 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: theme.palette.primary.dark,
     },
   },
+  selected: {
+    textDecoration: 'underline',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
 }));
 
-function Header({ logo }) {
+function Header({ logo, currentPage }) {
   const classes = useStyles();
 
   return (
@@ -113,7 +120,8 @@ function Header({ logo }) {
               variant="text"
               component={Link}
               to="/pricing"
-              className={classes.navItem}
+              className={`${classes.navItem} ${currentPage === 'pricing' &&
+                classes.selected}`}
             >
               Pricing
             </Button>

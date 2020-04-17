@@ -11,7 +11,7 @@ import Footer from '../components/footer';
 import theme from '../components/theme';
 
 function LayoutContainer(props) {
-  const { children } = props;
+  const { children, currentPage } = props;
   const data = useStaticQuery(graphql`
     {
       settings: allSanitySiteSettings {
@@ -61,7 +61,11 @@ function LayoutContainer(props) {
       </Helmet>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Header siteTitle={site.title} logo={site.logo} />
+        <Header
+          siteTitle={site.title}
+          logo={site.logo}
+          currentPage={currentPage}
+        />
         {children}
         <Container fixed>
           <Footer

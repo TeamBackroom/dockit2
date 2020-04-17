@@ -69,14 +69,14 @@ const IndexPage = props => {
 
   if (errors) {
     return (
-      <Layout>
+      <Layout currentPage="index">
         <GraphQLErrorList errors={errors} />
       </Layout>
     );
   }
 
   return (
-    <Layout>
+    <Layout currentPage="idex">
       <SEO
         title={title}
         description={seo ? seo.description : ''}
@@ -88,7 +88,12 @@ const IndexPage = props => {
       <Box py={5} bgcolor="#f6f7fb" id="features">
         <Container fixed>
           <Box mb={5} textAlign="center">
-            <Typography variant="h1" component="h2" gutterBottom>
+            <Typography
+              variant="h1"
+              component="h2"
+              gutterBottom
+              style={{ color: '#F15623' }}
+            >
               {featuresSection.title}
             </Typography>
           </Box>
@@ -213,7 +218,6 @@ export const query = graphql`
               }
               alt
             }
-            video
             title
           }
           cta {
