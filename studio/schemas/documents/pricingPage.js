@@ -41,6 +41,11 @@ export default {
       validation: Rule => Rule.unique(),
     },
     {
+      title: 'Form Section',
+      name: 'formSection',
+      type: 'formSection',
+    },
+    {
       name: 'seo',
       title: 'SEO',
       type: 'seo',

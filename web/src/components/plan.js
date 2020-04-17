@@ -63,6 +63,7 @@ function Plan({ plan }) {
     _rawMonthlyPriceDescription: monthlyPriceDescription,
     annualPrice,
     comingSoon,
+    comingSoonText,
   } = plan;
 
   return (
@@ -78,7 +79,11 @@ function Plan({ plan }) {
         className={classes.planBox}
       >
         <Typography variant="h6" gutterBottom className={classes.comingSoon}>
-          {comingSoon ? <span>COMING SOON!</span> : <span>&nbsp;</span>}
+          {comingSoon && comingSoonText ? (
+            <span>{comingSoonText}</span>
+          ) : (
+            <span>&nbsp;</span>
+          )}
         </Typography>
         <Box>
           {title && (

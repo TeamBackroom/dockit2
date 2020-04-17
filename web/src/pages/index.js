@@ -297,16 +297,6 @@ export const query = graphql`
             label
           }
         }
-        plans {
-          id
-          _rawTitle
-          _rawSubtitle
-          _rawDescription
-          _rawAnnualPriceDescription
-          _rawMonthlyPriceDescription
-          annualPrice
-          comingSoon
-        }
         formSection {
           title
           hubspotFormId
