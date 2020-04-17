@@ -1,13 +1,13 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Container, Box, Typography } from '@material-ui/core';
+import { Container, Box, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
 import theme from '../components/theme';
 import PortableText from '../components/portableText';
-import Pricing from '../components/pricing';
+import Plan from '../components/plan';
 
 const useStyles = makeStyles({
   title: {
@@ -136,7 +136,15 @@ const PricingPage = props => {
         )}
       </Container>
       {/* plans */}
-      <Pricing plans={plans} />
+      <Container fixed id="pricing">
+        <Box pt={5} pb={10}>
+          <Grid container spacing={10}>
+            {plans.map(plan => (
+              <Plan key={plan.id} plan={plan} />
+            ))}
+          </Grid>
+        </Box>
+      </Container>
       <Container>
         {/* statement */}
         <Typography variant="h2" gutterBottom>
@@ -173,8 +181,9 @@ export const query = graphql`
           _rawTitle
           _rawSubtitle
           _rawDescription
+          _rawAnnualPriceDescription
+          _rawMonthlyPriceDescription
           annualPrice
-          monthlyPrice
           comingSoon
         }
         statement {

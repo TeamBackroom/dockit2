@@ -302,8 +302,9 @@ export const query = graphql`
           _rawTitle
           _rawSubtitle
           _rawDescription
+          _rawAnnualPriceDescription
+          _rawMonthlyPriceDescription
           annualPrice
-          monthlyPrice
           comingSoon
         }
         formSection {
