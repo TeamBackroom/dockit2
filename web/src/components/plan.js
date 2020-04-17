@@ -79,11 +79,7 @@ function Plan({ plan }) {
         className={classes.planBox}
       >
         <Typography variant="h6" gutterBottom className={classes.comingSoon}>
-          {comingSoon && comingSoonText ? (
-            <span>{comingSoonText}</span>
-          ) : (
-            <span>&nbsp;</span>
-          )}
+          {comingSoon ? <span>COMING SOON</span> : <span>&nbsp;</span>}
         </Typography>
         <Box>
           {title && (
@@ -128,6 +124,17 @@ function Plan({ plan }) {
                 <PortableText blocks={monthlyPriceDescription} />
               </Typography>
             )}
+          </Box>
+        )}
+        {comingSoon && comingSoonText && (
+          <Box className={classes.planPrice}>
+            <Typography
+              variant="h3"
+              component="div"
+              className={classes.annualPrice}
+            >
+              {comingSoonText}
+            </Typography>
           </Box>
         )}
       </Box>

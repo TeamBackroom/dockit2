@@ -48,8 +48,8 @@ function HeroSection({ heroSection }) {
           <Grid item xs={12} lg={7}>
             <ReactPlayer
               url="https://vimeo.com/408538083"
-              light
-              playing
+              // light
+              // playing
               controls
               width="100%"
             />
