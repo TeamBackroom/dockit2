@@ -9,7 +9,8 @@ import {
   Link,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SanityMuxPlayer from 'sanity-mux-player';
+// import SanityMuxPlayer from 'sanity-mux-player';
+import ReactPlayer from 'react-player';
 
 const useStyles = makeStyles({
   btn: {
@@ -30,8 +31,8 @@ function HeroSection({ heroSection }) {
   const {
     title: featureTitle,
     description,
-    image,
-    video,
+    // image,
+    // video,
   } = heroSection.feature;
   const { url, label } = heroSection.cta;
 
@@ -43,7 +44,38 @@ function HeroSection({ heroSection }) {
             <Typography variant="h1">{title}</Typography>
           </Box>
         )}
-        <Grid container spacing={5}>
+        <Grid container spacing={5} direction="row-reverse">
+          <Grid item xs={12} lg={7}>
+            <ReactPlayer
+              url="https://vimeo.com/408538083"
+              light
+              playing
+              controls
+              width="100%"
+            />
+            {
+              // video ? (
+              // <SanityMuxPlayer
+              //   assetDocument={video.file.asset}
+              //   autoload
+              //   autoplay={false}
+              //   // className={string}
+              //   height={400}
+              //   loop={false}
+              //   muted={false}
+              //   showControls={false}
+              //   style={{}}
+              //   width="100%"
+              // />
+              // ):(
+              // <img
+              //   src={image.asset.fluid.src}
+              //   alt={image.alt}
+              //   style={{ width: '100%', display: 'inherit' }}
+              // />
+              // )
+            }
+          </Grid>
           <Grid item xs={12} lg={5}>
             <Box display="flex" alignItems="flex-start" height="100%">
               <Box>
@@ -64,28 +96,6 @@ function HeroSection({ heroSection }) {
                 )}
               </Box>
             </Box>
-          </Grid>
-          <Grid item xs={12} lg={7}>
-            {video ? (
-              <SanityMuxPlayer
-                assetDocument={video.file.asset}
-                autoload
-                autoplay={false}
-                // className={string}
-                height={400}
-                loop={false}
-                muted={false}
-                showControls={false}
-                style={{}}
-                width="100%"
-              />
-            ) : (
-              <img
-                src={image.asset.fluid.src}
-                alt={image.alt}
-                style={{ width: '100%', display: 'inherit' }}
-              />
-            )}
           </Grid>
         </Grid>
       </Container>
