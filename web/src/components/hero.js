@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Grid,
@@ -11,6 +11,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 // import SanityMuxPlayer from 'sanity-mux-player';
 import ReactPlayer from 'react-player';
+import anim from '../images/anim.gif';
+import play from '../images/play.png';
 
 const useStyles = makeStyles({
   btn: {
@@ -35,6 +37,7 @@ function HeroSection({ heroSection }) {
     // video,
   } = heroSection.feature;
   const { url, label } = heroSection.cta;
+  const [showVideo, setShowVideo] = useState(false);
 
   return (
     <Box my={8}>
@@ -46,13 +49,46 @@ function HeroSection({ heroSection }) {
         )}
         <Grid container spacing={5} direction="row-reverse">
           <Grid item xs={12} lg={7}>
-            <ReactPlayer
-              url="https://vimeo.com/408538083"
-              // light
-              // playing
-              controls
-              width="100%"
-            />
+            {showVideo ? (
+              <ReactPlayer
+                url="https://vimeo.com/408538083"
+                // light
+                playsinline
+                playing
+                controls={false}
+                width="100%"
+                // style={{ backgroundImage: `url(${playIcon}) !important` }}
+                config={{}}
+              />
+            ) : (
+              <Box
+                position="relative"
+                // with="100%"
+                height={360}
+                style={{
+                  backgroundImage: `url(${anim})`,
+                  backgroundSize: 'auto 360px',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: '50%',
+                }}
+              >
+                <img
+                  src={play}
+                  alt="play video icon"
+                  style={{
+                    display: 'block',
+                    position: 'absolute',
+                    width: 100,
+                    height: 100,
+                    zIndex: 100,
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50px,-50px)',
+                  }}
+                  onClick={() => setShowVideo(true)}
+                />
+              </Box>
+            )}
             {
               // video ? (
               // <SanityMuxPlayer
