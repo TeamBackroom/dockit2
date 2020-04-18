@@ -15,6 +15,22 @@ import anim from '../images/anim.gif';
 import play from '../images/play.png';
 
 const useStyles = makeStyles({
+  h2: {
+    position: 'relative',
+    paddingBottom: 20,
+    marginBottom: 20,
+
+    '&::after': {
+      content: '""',
+      display: 'block',
+      width: 120,
+      height: 5,
+      backgroundColor: '#F25523',
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+    },
+  },
   btn: {
     marginTop: 30,
     borderRadius: 20,
@@ -113,9 +129,9 @@ function HeroSection({ heroSection }) {
             }
           </Grid>
           <Grid item xs={12} lg={5}>
-            <Box display="flex" alignItems="flex-start" height="100%">
+            <Box display="flex" alignItems="center" height="100%">
               <Box>
-                <Typography variant="h2" gutterBottom>
+                <Typography variant="h2" gutterBottom className={classes.h2}>
                   {featureTitle}
                 </Typography>
                 <Typography variant="body1">{description}</Typography>

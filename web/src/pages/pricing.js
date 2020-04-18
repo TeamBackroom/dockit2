@@ -123,9 +123,11 @@ const PricingPage = props => {
               <Typography variant="h2" gutterBottom>
                 {heroSimple.title}
               </Typography>
-              <Typography variant="h5">
-                {heroSimple.description[0].children[0].text}
-              </Typography>
+              <Box mt={5} mb={2}>
+                <Typography variant="h5">
+                  {heroSimple.description[0].children[0].text}
+                </Typography>
+              </Box>
             </>
           )}
         </Box>
@@ -163,7 +165,7 @@ const PricingPage = props => {
         ))}
         {/* form */}
         {formSection.hubspotFormId && (
-          <Box id="form" maxWidth={500} my={15} mx="auto">
+          <Box id="form" maxWidth={500} mt={15} mb={5} mx="auto">
             <Box mb={2}>
               <Typography variant="h2" gutterBottom style={{ lineHeight: 1.5 }}>
                 {formSection.title}
