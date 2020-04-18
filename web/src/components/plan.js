@@ -104,7 +104,7 @@ function Plan({ plan }) {
             </Box>
           )}
         </Box>
-        {annualPrice && (
+        {!comingSoon && annualPrice && (
           <Box className={classes.planPrice}>
             <Typography
               variant="h1"
