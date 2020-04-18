@@ -67,7 +67,7 @@ function HeroSection({ heroSection }) {
           <Grid item xs={12} lg={7}>
             {showVideo ? (
               <ReactPlayer
-                url="https://vimeo.com/408538083"
+                url="https://vimeo.com/409067592"
                 // light
                 playsinline
                 playing
