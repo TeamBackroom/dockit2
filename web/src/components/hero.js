@@ -65,46 +65,55 @@ function HeroSection({ heroSection }) {
         )}
         <Grid container spacing={5} direction="row-reverse">
           <Grid item xs={12} lg={7}>
-            {showVideo ? (
+            <Box position="relative">
+              {!showVideo && (
+                <Box
+                  position="absolute"
+                  zIndex={10}
+                  top={0}
+                  bottom={0}
+                  left={0}
+                  right={0}
+                  style={{
+                    backgroundImage: `url(${anim})`,
+                    backgroundSize: 'auto 360px',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: '50%',
+                  }}
+                  onClick={() => setShowVideo(true)}
+                >
+                  <img
+                    src={play}
+                    alt="play video icon"
+                    style={{
+                      display: 'block',
+                      position: 'absolute',
+                      width: 100,
+                      height: 100,
+                      zIndex: 100,
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50px,-50px)',
+                      opacity: 0.5,
+                    }}
+                  />
+                </Box>
+              )}
               <ReactPlayer
                 url="https://vimeo.com/409067592"
                 // light
                 playsinline
-                playing
+                playing={showVideo}
                 controls={false}
                 width="100%"
-                // style={{ backgroundImage: `url(${playIcon}) !important` }}
+                style={{
+                  position: 'realtive',
+                  zIndex: 1,
+                  opacity: showVideo ? 1 : 0,
+                }}
                 config={{}}
               />
-            ) : (
-              <Box
-                position="relative"
-                // with="100%"
-                height={360}
-                style={{
-                  backgroundImage: `url(${anim})`,
-                  backgroundSize: 'auto 360px',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: '50%',
-                }}
-              >
-                <img
-                  src={play}
-                  alt="play video icon"
-                  style={{
-                    display: 'block',
-                    position: 'absolute',
-                    width: 100,
-                    height: 100,
-                    zIndex: 100,
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50px,-50px)',
-                  }}
-                  onClick={() => setShowVideo(true)}
-                />
-              </Box>
-            )}
+            </Box>
             {
               // video ? (
               // <SanityMuxPlayer
