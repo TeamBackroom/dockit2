@@ -104,7 +104,7 @@ function HeroSection({ heroSection }) {
                 // light
                 playsinline
                 playing={showVideo}
-                controls={false}
+                controls
                 width="100%"
                 style={{
                   position: 'realtive',
