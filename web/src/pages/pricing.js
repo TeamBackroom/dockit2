@@ -1,13 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import {
-  Container,
-  Box,
-  Typography,
-  Button,
-  Link,
-  Hidden,
-} from '@material-ui/core';
+import { Container, Box, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import HubspotForm from 'react-hubspot-form';
 import GraphQLErrorList from '../components/graphql-error-list';
@@ -15,23 +8,22 @@ import SEO from '../components/seo';
 import Layout from '../containers/layout';
 import theme from '../components/theme';
 import PortableText from '../components/portableText';
-import HeroSection from '../components/hero';
-import Feature from '../components/feature';
-import Solutions from '../components/solutions';
-import Pricing from '../components/pricing';
+import Plan from '../components/plan';
 
 const useStyles = makeStyles({
+  title: {
+    color: '#F15623',
+  },
   heading: {
     position: 'relative',
     paddingBottom: 20,
     marginBottom: 20,
-
     '&::after': {
       content: '""',
       display: 'block',
       width: 120,
       height: 5,
-      backgroundColor: '#F25523',
+      backgroundColor: '#F15623',
       position: 'absolute',
       bottom: 0,
       left: 0,
@@ -102,18 +94,19 @@ const PricingPage = props => {
     plans,
     statement,
     features,
+    formSection,
   } = data.page.nodes[0];
 
   if (errors) {
     return (
-      <Layout>
+      <Layout currentPage="pricing">
         <GraphQLErrorList errors={errors} />
       </Layout>
     );
   }
 
   return (
-    <Layout>
+    <Layout currentPage="pricing">
       <SEO
         title={title}
         description={seo ? seo.description : ''}
@@ -121,16 +114,22 @@ const PricingPage = props => {
       />
       <Container>
         <Box mt={10}>
-          <Typography variant="h3" component="h1">
+          <Typography variant="h1" className={classes.title}>
             {title}
           </Typography>
           {/* hero */}
-          <Typography variant="h1" gutterBottom>
-            {heroSimple.title}
-          </Typography>
-          <Typography variant="h5">
-            {heroSimple.description[0].children[0].text}
-          </Typography>
+          {heroSimple && (
+            <>
+              <Typography variant="h2" gutterBottom>
+                {heroSimple.title}
+              </Typography>
+              <Box mt={5} mb={2}>
+                <Typography variant="h5">
+                  {heroSimple.description[0].children[0].text}
+                </Typography>
+              </Box>
+            </>
+          )}
         </Box>
         {plansTitle && (
           <Box mt={10}>
@@ -141,7 +140,15 @@ const PricingPage = props => {
         )}
       </Container>
       {/* plans */}
-      <Pricing plans={plans} />
+      <Container fixed id="pricing">
+        <Box pt={5} pb={10}>
+          <Grid container spacing={10}>
+            {plans.map(plan => (
+              <Plan key={plan.id} plan={plan} />
+            ))}
+          </Grid>
+        </Box>
+      </Container>
       <Container>
         {/* statement */}
         <Typography variant="h2" gutterBottom>
@@ -153,9 +160,24 @@ const PricingPage = props => {
             <Typography variant="h3" className={classes.heading}>
               {feature.title}
             </Typography>
-            <Typography variant="body1">{feature.description}</Typography>
+            <Typography variant="h5">{feature.description}</Typography>
           </Box>
         ))}
+        {/* form */}
+        {formSection.hubspotFormId && (
+          <Box id="form" maxWidth={500} mt={15} mb={5} mx="auto">
+            <Box mb={2}>
+              <Typography variant="h2" gutterBottom style={{ lineHeight: 1.5 }}>
+                {formSection.title}
+              </Typography>
+            </Box>
+            <HubspotForm
+              portalId={process.env.GATSBY_HUBSPOT_PORTAL_ID}
+              formId={formSection.hubspotFormId}
+              loading={<div />}
+            />
+          </Box>
+        )}
       </Container>
     </Layout>
   );
@@ -178,9 +200,11 @@ export const query = graphql`
           _rawTitle
           _rawSubtitle
           _rawDescription
+          _rawAnnualPriceDescription
+          _rawMonthlyPriceDescription
           annualPrice
-          monthlyPrice
           comingSoon
+          comingSoonText
         }
         statement {
           _rawTitle
@@ -199,6 +223,10 @@ export const query = graphql`
               }
             }
           }
+        }
+        formSection {
+          title
+          hubspotFormId
         }
       }
     }

@@ -1,25 +1,30 @@
 import { format } from 'date-fns';
 
 export default {
+  title: 'Feature',
   name: 'feature',
   type: 'document',
-  title: 'Feature',
   fields: [
     {
+      title: 'Title',
       name: 'title',
       type: 'string',
-      title: 'Title',
       description: 'Titles should be catchy, descriptive, and not too long.',
     },
     {
+      title: 'Description',
       name: 'description',
       type: 'text',
-      title: 'Description',
     },
     {
+      title: 'Image',
       name: 'image',
       type: 'mainImage',
-      title: 'Image',
     },
+    {
+      title: "Video",
+      name: "video",
+      type: "video",
+    }
   ],
 };

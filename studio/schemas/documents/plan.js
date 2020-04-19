@@ -30,14 +30,26 @@ export default {
       type: 'number',
     },
     {
-      title: 'Monthly Price',
-      name: 'monthlyPrice',
-      type: 'number',
+      title: 'Annual Price Description',
+      name: 'annualPriceDescription',
+      type: 'array',
+      of: [{ type: 'block' }],
+    },
+    {
+      title: 'Monthly Price Description',
+      name: 'monthlyPriceDescription',
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
       title: 'Coming Soon',
       name: 'comingSoon',
       type: 'boolean',
+    },
+    {
+      title: 'Coming Soon Text',
+      name: 'comingSoonText',
+      type: 'string',
     },
   ],
   preview: {

@@ -4,14 +4,14 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Helmet from 'react-helmet';
+import { Container } from '@material-ui/core';
+import { useStaticQuery, graphql } from 'gatsby';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import theme from '../components/theme';
-import { Container } from '@material-ui/core';
-import { useStaticQuery, graphql } from 'gatsby';
 
 function LayoutContainer(props) {
-  const { children } = props;
+  const { children, currentPage } = props;
   const data = useStaticQuery(graphql`
     {
       settings: allSanitySiteSettings {
@@ -61,7 +61,11 @@ function LayoutContainer(props) {
       </Helmet>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Header siteTitle={site.title} logo={site.logo} />
+        <Header
+          siteTitle={site.title}
+          logo={site.logo}
+          currentPage={currentPage}
+        />
         {children}
         <Container fixed>
           <Footer

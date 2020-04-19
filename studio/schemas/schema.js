@@ -17,6 +17,7 @@ import solution from './documents/solution';
 import statement from './documents/statement';
 import nav from './documents/nav';
 import plan from './documents/plan';
+import video from './documents/video';
 
 // Object types
 import bodyPortableText from './objects/bodyPortableText';
@@ -63,6 +64,7 @@ export default createSchema({
     featuresSection,
     formSection,
     seo,
+    video,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
