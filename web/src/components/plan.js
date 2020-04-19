@@ -78,10 +78,7 @@ function Plan({ plan }) {
         justifyContent="flex-start"
         className={classes.planBox}
       >
-        <Typography variant="h6" gutterBottom className={classes.comingSoon}>
-          {comingSoon ? <span>COMING SOON</span> : <span>&nbsp;</span>}
-        </Typography>
-        <Box>
+        <Box pt={3}>
           {title && (
             <Typography variant="h1" gutterBottom className={classes.planTitle}>
               <PortableText blocks={title} />
