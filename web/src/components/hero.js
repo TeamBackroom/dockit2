@@ -131,7 +131,7 @@ function HeroSection({ heroSection }) {
                     src={play}
                     alt="play video icon"
                     className={classes.btnPlay}
-                    style={{ visibility: previewLoaded ? 1 : 0 }}
+                    style={{ visibility: previewLoaded ? 'visible' : 'hidden' }}
                   />
                 </Button>
               </Box>
