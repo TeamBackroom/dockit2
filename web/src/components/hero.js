@@ -71,6 +71,9 @@ const useStyles = makeStyles({
     backgroundColor: '#000',
     maxHeight: '100%',
   },
+  preview: {
+    width: '100%',
+  },
 });
 
 function HeroSection({ heroSection }) {
@@ -86,6 +89,7 @@ function HeroSection({ heroSection }) {
   const [showVideo, setShowVideo] = useState(false);
   const rootEl = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [previewLoaded, setPreviewLoaded] = useState(false);
 
   useLayoutEffect(() => {
     if (rootEl.current) {
@@ -116,37 +120,21 @@ function HeroSection({ heroSection }) {
           <Grid container spacing={5} direction="row-reverse">
             <Grid item xs={12} lg={7}>
               <Box position="relative">
-                <Box onClick={handleClickOpen}>
-                  <img src={anim} alt="video" style={{ width: '100%' }} />
+                <Button onClick={handleClickOpen}>
+                  <img
+                    src={anim}
+                    alt="video"
+                    className={classes.preview}
+                    onLoad={() => setPreviewLoaded(true)}
+                  />
                   <img
                     src={play}
                     alt="play video icon"
                     className={classes.btnPlay}
+                    style={{ visibility: previewLoaded ? 1 : 0 }}
                   />
-                </Box>
+                </Button>
               </Box>
-              {
-                // video ? (
-                // <SanityMuxPlayer
-                //   assetDocument={video.file.asset}
-                //   autoload
-                //   autoplay={false}
-                //   // className={string}
-                //   height={400}
-                //   loop={false}
-                //   muted={false}
-                //   showControls={false}
-                //   style={{}}
-                //   width="100%"
-                // />
-                // ):(
-                // <img
-                //   src={image.asset.fluid.src}
-                //   alt={image.alt}
-                //   style={{ width: '100%', display: 'inherit' }}
-                // />
-                // )
-              }
             </Grid>
             <Grid item xs={12} lg={5}>
               <Box display="flex" alignItems="center" height="100%">
