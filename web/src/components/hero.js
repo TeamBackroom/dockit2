@@ -64,8 +64,12 @@ const useStyles = makeStyles({
     width: '100%',
   },
   modalPaper: {
-    minWidth: 648,
+    minWidth: 300,
     maxWidth: '100%',
+    margin: 0,
+    borderRadius: 0,
+    backgroundColor: '#000',
+    maxHeight: '100%',
   },
 });
 
@@ -111,22 +115,9 @@ function HeroSection({ heroSection }) {
           )}
           <Grid container spacing={5} direction="row-reverse">
             <Grid item xs={12} lg={7}>
-              <Box position="relative" height={360}>
-                <Box
-                  position="absolute"
-                  zIndex={10}
-                  top={0}
-                  bottom={0}
-                  left={0}
-                  right={0}
-                  style={{
-                    backgroundImage: `url(${anim})`,
-                    backgroundSize: 'auto 360px',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: '50%',
-                  }}
-                  onClick={handleClickOpen}
-                >
+              <Box position="relative">
+                <Box onClick={handleClickOpen}>
+                  <img src={anim} alt="video" style={{ width: '100%' }} />
                   <img
                     src={play}
                     alt="play video icon"
@@ -194,8 +185,14 @@ function HeroSection({ heroSection }) {
           playsinline
           playing={showVideo}
           controls
-          width={dimensions.width * 0.8}
-          height={dimensions.width * 0.8 * 0.5625}
+          width={
+            dimensions.width > 700 ? dimensions.width * 0.8 : dimensions.width
+          }
+          height={
+            (dimensions.width > 700
+              ? dimensions.width * 0.8
+              : dimensions.width) * 0.5625
+          }
           config={{}}
         />
       </Dialog>
