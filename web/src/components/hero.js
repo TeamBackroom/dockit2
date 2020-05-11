@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import {
   Container,
   Grid,
@@ -11,8 +11,9 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 // import SanityMuxPlayer from 'sanity-mux-player';
 import ReactPlayer from 'react-player';
-import anim from '../images/anim.gif';
+import Dialog from '@material-ui/core/Dialog';
 import play from '../images/play.png';
+import anim from '../images/anim.gif';
 
 const useStyles = makeStyles({
   h2: {
@@ -41,6 +42,15 @@ const useStyles = makeStyles({
       textDecoration: 'none',
     },
   },
+  modalContainer: {
+    position: 'fixed',
+    top: 0,
+    width: '100%',
+  },
+  modalPaper: {
+    minWidth: 648,
+    maxWidth: '100%',
+  },
 });
 
 function HeroSection({ heroSection }) {
@@ -54,19 +64,38 @@ function HeroSection({ heroSection }) {
   } = heroSection.feature;
   const { url, label } = heroSection.cta;
   const [showVideo, setShowVideo] = useState(false);
+  const rootEl = useRef(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  useLayoutEffect(() => {
+    if (rootEl.current) {
+      setDimensions({
+        width: rootEl.current.offsetWidth,
+        height: rootEl.current.offsetHeight,
+      });
+    }
+  }, []);
+
+  const handleClickOpen = () => {
+    setShowVideo(true);
+  };
+
+  const handleClose = () => {
+    setShowVideo(false);
+  };
 
   return (
-    <Box my={8}>
-      <Container fixed>
-        {title && (
-          <Box textAlign="center" mb={7}>
-            <Typography variant="h1">{title}</Typography>
-          </Box>
-        )}
-        <Grid container spacing={5} direction="row-reverse">
-          <Grid item xs={12} lg={7}>
-            <Box position="relative">
-              {!showVideo && (
+    <div ref={rootEl}>
+      <Box my={8}>
+        <Container fixed>
+          {title && (
+            <Box textAlign="center" mb={7}>
+              <Typography variant="h1">{title}</Typography>
+            </Box>
+          )}
+          <Grid container spacing={5} direction="row-reverse">
+            <Grid item xs={12} lg={7}>
+              <Box position="relative" height={360}>
                 <Box
                   position="absolute"
                   zIndex={10}
@@ -80,7 +109,7 @@ function HeroSection({ heroSection }) {
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: '50%',
                   }}
-                  onClick={() => setShowVideo(true)}
+                  onClick={handleClickOpen}
                 >
                   <img
                     src={play}
@@ -98,69 +127,73 @@ function HeroSection({ heroSection }) {
                     }}
                   />
                 </Box>
-              )}
-              <ReactPlayer
-                url="https://vimeo.com/409067592"
-                // light
-                playsinline
-                playing={showVideo}
-                controls
-                width="100%"
-                style={{
-                  position: 'realtive',
-                  zIndex: 1,
-                  opacity: showVideo ? 1 : 0,
-                }}
-                config={{}}
-              />
-            </Box>
-            {
-              // video ? (
-              // <SanityMuxPlayer
-              //   assetDocument={video.file.asset}
-              //   autoload
-              //   autoplay={false}
-              //   // className={string}
-              //   height={400}
-              //   loop={false}
-              //   muted={false}
-              //   showControls={false}
-              //   style={{}}
-              //   width="100%"
-              // />
-              // ):(
-              // <img
-              //   src={image.asset.fluid.src}
-              //   alt={image.alt}
-              //   style={{ width: '100%', display: 'inherit' }}
-              // />
-              // )
-            }
-          </Grid>
-          <Grid item xs={12} lg={5}>
-            <Box display="flex" alignItems="center" height="100%">
-              <Box>
-                <Typography variant="h2" gutterBottom className={classes.h2}>
-                  {featureTitle}
-                </Typography>
-                <Typography variant="body1">{description}</Typography>
-                {heroSection.cta && (
-                  <Button
-                    component={Link}
-                    href={url}
-                    variant="contained"
-                    color="secondary"
-                    className={classes.btn}
-                  >
-                    {label}
-                  </Button>
-                )}
               </Box>
-            </Box>
+              {
+                // video ? (
+                // <SanityMuxPlayer
+                //   assetDocument={video.file.asset}
+                //   autoload
+                //   autoplay={false}
+                //   // className={string}
+                //   height={400}
+                //   loop={false}
+                //   muted={false}
+                //   showControls={false}
+                //   style={{}}
+                //   width="100%"
+                // />
+                // ):(
+                // <img
+                //   src={image.asset.fluid.src}
+                //   alt={image.alt}
+                //   style={{ width: '100%', display: 'inherit' }}
+                // />
+                // )
+              }
+            </Grid>
+            <Grid item xs={12} lg={5}>
+              <Box display="flex" alignItems="center" height="100%">
+                <Box>
+                  <Typography variant="h2" gutterBottom className={classes.h2}>
+                    {featureTitle}
+                  </Typography>
+                  <Typography variant="body1">{description}</Typography>
+                  {heroSection.cta && (
+                    <Button
+                      component={Link}
+                      href={url}
+                      variant="contained"
+                      color="secondary"
+                      className={classes.btn}
+                    >
+                      {label}
+                    </Button>
+                  )}
+                </Box>
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-    </Box>
+        </Container>
+      </Box>
+      <Dialog
+        open={showVideo}
+        onClose={handleClose}
+        classes={{
+          container: classes.modalContainer,
+          paper: classes.modalPaper,
+        }}
+      >
+        <ReactPlayer
+          url="https://vimeo.com/409067592"
+          playsinline
+          playing={showVideo}
+          controls
+          width={dimensions.width * 0.8}
+          height={dimensions.width * 0.8 * 0.5625}
+          config={{}}
+        />
+      </Dialog>
+    </div>
   );
 }
 
