@@ -46,7 +46,7 @@ const useStyles = makeStyles({
     display: 'block',
     position: 'absolute',
     width: 120,
-    height: 120,
+    maxWidth: '30%',
     zIndex: 100,
     top: '50%',
     left: '50%',
@@ -119,7 +119,7 @@ function HeroSection({ heroSection }) {
           )}
           <Grid container spacing={5} direction="row-reverse">
             <Grid item xs={12} lg={7}>
-              <Box position="relative">
+              <Box position="relative" minHeight={120}>
                 <Button onClick={handleClickOpen}>
                   <img
                     src={anim}
@@ -131,7 +131,7 @@ function HeroSection({ heroSection }) {
                     src={play}
                     alt="play video icon"
                     className={classes.btnPlay}
-                    style={{ visibility: previewLoaded ? 'visible' : 'hidden' }}
+                    // style={{ visibility: previewLoaded ? 'visible' : 'hidden' }}
                   />
                 </Button>
               </Box>
