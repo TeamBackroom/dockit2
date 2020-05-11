@@ -42,6 +42,22 @@ const useStyles = makeStyles({
       textDecoration: 'none',
     },
   },
+  btnPlay: {
+    display: 'block',
+    position: 'absolute',
+    width: 120,
+    height: 120,
+    zIndex: 100,
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%,-50%)',
+    opacity: 0.75,
+    cursor: 'pointer',
+    transition: 'opacity 0.2s linear',
+    '&:hover': {
+      opacity: 1,
+    },
+  },
   modalContainer: {
     position: 'fixed',
     top: 0,
@@ -114,17 +130,7 @@ function HeroSection({ heroSection }) {
                   <img
                     src={play}
                     alt="play video icon"
-                    style={{
-                      display: 'block',
-                      position: 'absolute',
-                      width: 100,
-                      height: 100,
-                      zIndex: 100,
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50px,-50px)',
-                      opacity: 0.5,
-                    }}
+                    className={classes.btnPlay}
                   />
                 </Box>
               </Box>
