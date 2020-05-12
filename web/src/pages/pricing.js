@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { Container, Box, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -97,6 +98,8 @@ const PricingPage = props => {
     formSection,
   } = data.page.nodes[0];
 
+  const { _rawDescription: statementDescription } = statement;
+
   if (errors) {
     return (
       <Layout currentPage="pricing">
@@ -152,10 +155,10 @@ const PricingPage = props => {
       <Container>
         {/* statement */}
         <Typography variant="h2" gutterBottom>
-          <PortableText blocks={statement._rawDescription} />
+          <PortableText blocks={statementDescription} />
         </Typography>
         {/* features */}
-        {features.map((feature, index) => (
+        {features.map(feature => (
           <Box key={feature.id} mt={10}>
             <Typography variant="h3" className={classes.heading}>
               {feature.title}
@@ -232,5 +235,15 @@ export const query = graphql`
     }
   }
 `;
+
+PricingPage.propTypes = {
+  data: PropTypes.object,
+  errors: PropTypes.arrayOf(PropTypes.object),
+};
+
+PricingPage.defaultProps = {
+  data: null,
+  errors: null,
+};
 
 export default PricingPage;

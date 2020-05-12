@@ -1,23 +1,16 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import {
-  Container,
-  Box,
-  Typography,
-  Button,
-  Link,
-  Hidden,
-} from '@material-ui/core';
+import { Container, Box, Typography, Button, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import HubspotForm from 'react-hubspot-form';
 import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
-import PortableText from '../components/portableText';
 import HeroSection from '../components/hero';
 import Feature from '../components/feature';
 import Solutions from '../components/solutions';
+import Statement from '../components/statement';
 
 const useStyles = makeStyles({
   h2: {
@@ -44,11 +37,6 @@ const useStyles = makeStyles({
     padding: '2px 30px',
     '&:hover': {
       textDecoration: 'none',
-    },
-  },
-  statement: {
-    '& p': {
-      margin: 0,
     },
   },
 });
@@ -134,48 +122,7 @@ const IndexPage = props => {
       {/* statements */}
       <Container fixed>
         {statements.map(statement => (
-          <Box
-            key={statement.id}
-            my={10}
-            textAlign={statement.image ? 'left' : 'center'}
-            margin="0 auto"
-            display={statement.image ? 'flex' : 'block'}
-            alignItems="center"
-            className={classes.statement}
-          >
-            {statement.image && (
-              <Hidden mdDown>
-                <Box mr={10}>
-                  <img
-                    src={statement.image.asset.fluid.src}
-                    alt={statement.image.alt}
-                    style={{ height: '100%' }}
-                  />
-                </Box>
-              </Hidden>
-            )}
-            <Box>
-              <Typography variant="h2" gutterBottom style={{ lineHeight: 1.5 }}>
-                <PortableText blocks={statement._rawTitle} />
-              </Typography>
-              {statement._rawDescription && (
-                <Typography variant="body1" component="div">
-                  <PortableText blocks={statement._rawDescription} />
-                </Typography>
-              )}
-            </Box>
-            {statement.cta && (
-              <Button
-                component={Link}
-                href={statement.cta.url}
-                variant="contained"
-                color="secondary"
-                className={classes.btn}
-              >
-                {statement.cta.label}
-              </Button>
-            )}
-          </Box>
+          <Statement key={statement.id} statement={statement} />
         ))}
         {formSection.hubspotFormId && (
           <Box id="form" maxWidth={500} mt={5} mx="auto">
