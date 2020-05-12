@@ -2,12 +2,25 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'gatsby';
 import PortableText from './portableText';
 
 const useStyles = makeStyles({
   logo: {
     width: 400,
     maxWidth: '100%',
+  },
+  link: {
+    fontSize: '1.2rem',
+    margin: '0 15px',
+    textDecoration: 'none',
+    color: '#2F3F4D',
+  },
+  bottomLine: {
+    '& a': {
+      textDecoration: 'none',
+      color: '#598CB3',
+    },
   },
 });
 
@@ -25,7 +38,15 @@ const Footer = props => {
             className={classes.logo}
           />
         )}
-        <Box mt={10}>
+        <Box my={8}>
+          <Link className={classes.link} to="/terms">
+            Terms &amp; Privacy
+          </Link>
+          <Link className={classes.link} to="/license">
+            License
+          </Link>
+        </Box>
+        <Box className={classes.bottomLine}>
           <PortableText blocks={footerText} />
         </Box>
       </Box>
