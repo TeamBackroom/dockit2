@@ -11,6 +11,7 @@ import post from './documents/post';
 import siteSettings from './documents/siteSettings';
 import landingPage from './documents/landingPage';
 import pricingPage from './documents/pricingPage';
+import termsPage from './documents/termsPage';
 import feature from './documents/feature';
 import cta from './documents/cta';
 import solution from './documents/solution';
@@ -49,6 +50,7 @@ export default createSchema({
     plan,
     landingPage,
     pricingPage,
+    termsPage,
     siteSettings,
     post,
     category,

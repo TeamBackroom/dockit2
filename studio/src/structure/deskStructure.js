@@ -93,6 +93,15 @@ export default () =>
             .schemaType('pricingPage')
             .documentId('pricingPage'),
         ),
+        S.listItem()
+        .title('Terms & Policy Page')
+        .icon(MdInsertDriveFile)
+        .child(
+          S.editor()
+            .id('termsPage')
+            .schemaType('termsPage')
+            .documentId('termsPage'),
+        ),
       S.divider(),
       S.listItem()
         .title('Features')
@@ -148,6 +157,7 @@ export default () =>
             'siteSettings',
             'landingPage',
             'pricingPage',
+            'termsPage',
             'feature',
             'cta',
             'solution',
