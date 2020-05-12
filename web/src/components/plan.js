@@ -6,13 +6,13 @@ import PortableText from './portableText';
 
 const useStyles = makeStyles(theme => ({
   planBox: {
-    backgroundColor: theme.palette.secondary.dark,
-    color: theme.palette.common.white,
+    backgroundColor: '#dcf0e7',
+    // color: 'theme.palette.text.primary',
   },
   planTitle: {
-    zoom: '110%',
+    zoom: '85%',
     lineHeight: 1,
-    color: theme.palette.common.white,
+    // color: theme.palette.text.primary,
     '& p': {
       marginTop: 0,
       marginBottom: 10,
@@ -20,11 +20,14 @@ const useStyles = makeStyles(theme => ({
   },
   planSubtitle: {
     lineHeight: 1.2,
-    color: theme.palette.common.white,
+    // color: theme.palette.text.primary,
     '& p': {
       marginTop: 0,
       marginBottom: 10,
     },
+  },
+  description: {
+    color: '#2F3F4D',
   },
   planPrice: {
     zoom: '110%',
@@ -44,11 +47,29 @@ const useStyles = makeStyles(theme => ({
     },
   },
   annualPrice: {
-    color: theme.palette.common.white,
+    zoom: '140%',
   },
-  comingSoon: {
-    color: '#F15623',
-    fontWeight: 'bold',
+  annualPriceDescription: {
+    color: '#2F3F4D',
+    '& p': {
+      margin: 0,
+      fontSize: '1.3rem',
+      fontWeight: 'bold',
+    },
+  },
+  commingSoon: {
+    backgroundColor: '#F15623',
+    position: 'absolute',
+    padding: '15px 40px 15px 30px',
+    top: -20,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    borderRadius: '0 50px 0 0',
+  },
+  comingSoonText: {
+    color: theme.palette.common.white,
+    textTransform: 'uppercase',
+    fontSize: '1.2rem',
   },
 }));
 
@@ -76,9 +97,10 @@ function Plan({ plan }) {
         display="flex"
         flexDirection="column"
         justifyContent="flex-start"
+        position="relative"
         className={classes.planBox}
       >
-        <Box pt={3}>
+        <Box pt={4}>
           {title && (
             <Typography variant="h1" gutterBottom className={classes.planTitle}>
               <PortableText blocks={title} />
@@ -95,7 +117,7 @@ function Plan({ plan }) {
           )}
           {description && (
             <Box px={2}>
-              <Typography variant="h5">
+              <Typography variant="h5" className={classes.description}>
                 <PortableText blocks={description} />
               </Typography>
             </Box>
@@ -111,7 +133,12 @@ function Plan({ plan }) {
               ${annualPrice}
             </Typography>
             {annualPriceDescription && (
-              <Typography variant="h5" component="div" gutterBottom>
+              <Typography
+                variant="h5"
+                component="div"
+                gutterBottom
+                className={classes.annualPriceDescription}
+              >
                 <PortableText blocks={annualPriceDescription} />
               </Typography>
             )}
@@ -124,11 +151,11 @@ function Plan({ plan }) {
           </Box>
         )}
         {comingSoon && comingSoonText && (
-          <Box className={classes.planPrice}>
+          <Box className={classes.commingSoon}>
             <Typography
               variant="h3"
               component="div"
-              className={classes.annualPrice}
+              className={classes.comingSoonText}
             >
               {comingSoonText}
             </Typography>

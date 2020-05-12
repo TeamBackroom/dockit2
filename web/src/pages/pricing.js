@@ -61,22 +61,6 @@ const useStyles = makeStyles({
       marginBottom: 10,
     },
   },
-  planPrice: {
-    position: 'relative',
-    paddingTop: 20,
-    marginTop: 20,
-    '&::before': {
-      content: '""',
-      display: 'block',
-      width: 80,
-      height: 5,
-      backgroundColor: '#F25523',
-      position: 'absolute',
-      top: 0,
-      left: '50%',
-      transform: 'translateX(-40px)',
-    },
-  },
   statement: {
     '& p': {
       margin: 0,
@@ -145,7 +129,7 @@ const PricingPage = props => {
       {/* plans */}
       <Container fixed id="pricing">
         <Box pt={5} pb={10}>
-          <Grid container spacing={10}>
+          <Grid container spacing={5}>
             {plans.map(plan => (
               <Plan key={plan.id} plan={plan} />
             ))}
