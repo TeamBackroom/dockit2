@@ -93,7 +93,7 @@ export default () =>
             .schemaType('pricingPage')
             .documentId('pricingPage'),
         ),
-        S.listItem()
+      S.listItem()
         .title('Terms & Policy Page')
         .icon(MdInsertDriveFile)
         .child(
@@ -102,6 +102,15 @@ export default () =>
             .schemaType('termsPage')
             .documentId('termsPage'),
         ),
+      S.listItem()
+        .title('License Page')
+        .icon(MdInsertDriveFile)
+        .child(
+          S.editor()
+            .id('licensePage')
+            .schemaType('licensePage')
+            .documentId('licensePage'),
+      ),
       S.divider(),
       S.listItem()
         .title('Features')
@@ -158,6 +167,7 @@ export default () =>
             'landingPage',
             'pricingPage',
             'termsPage',
+            'licensePage',
             'feature',
             'cta',
             'solution',
