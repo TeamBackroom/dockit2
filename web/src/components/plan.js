@@ -65,6 +65,7 @@ const useStyles = makeStyles(theme => ({
     left: '50%',
     transform: 'translateX(-50%)',
     borderRadius: '0 50px 0 0',
+    whiteSpace: 'nowrap',
   },
   comingSoonText: {
     color: theme.palette.common.white,
