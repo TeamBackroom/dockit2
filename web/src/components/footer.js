@@ -38,7 +38,7 @@ const Footer = props => {
             className={classes.logo}
           />
         )}
-        <Box my={8}>
+        <Box mt={8} mb={5}>
           <Link className={classes.link} to="/terms">
             Terms &amp; Privacy
           </Link>
