@@ -58,6 +58,11 @@ const useStyles = makeStyles({
       opacity: 1,
     },
   },
+  modalRoot: {
+    '& .MuiBackdrop-root': {
+      backgroundColor: '#000000cc',
+    },
+  },
   modalContainer: {
     position: 'fixed',
     top: 0,
@@ -89,7 +94,6 @@ function HeroSection({ heroSection }) {
   const [showVideo, setShowVideo] = useState(false);
   const rootEl = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [previewLoaded, setPreviewLoaded] = useState(false);
 
   useLayoutEffect(() => {
     if (rootEl.current) {
@@ -121,17 +125,11 @@ function HeroSection({ heroSection }) {
             <Grid item xs={12} lg={7}>
               <Box position="relative" minHeight={120}>
                 <Button onClick={handleClickOpen}>
-                  <img
-                    src={anim}
-                    alt="video"
-                    className={classes.preview}
-                    onLoad={() => setPreviewLoaded(true)}
-                  />
+                  <img src={anim} alt="video" className={classes.preview} />
                   <img
                     src={play}
                     alt="play video icon"
                     className={classes.btnPlay}
-                    // style={{ visibility: previewLoaded ? 'visible' : 'hidden' }}
                   />
                 </Button>
               </Box>
@@ -164,6 +162,7 @@ function HeroSection({ heroSection }) {
         open={showVideo}
         onClose={handleClose}
         classes={{
+          root: classes.modalRoot,
           container: classes.modalContainer,
           paper: classes.modalPaper,
         }}
