@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     fontSize: '1.2rem',
     margin: '0 15px',
     textDecoration: 'none',
-    color: '#2F3F4D',
+    color: '#598CB3',
   },
   bottomLine: {
     '& a': {
