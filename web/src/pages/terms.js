@@ -85,7 +85,7 @@ const TermsPage = props => {
         <Box mt={5} className={classes.content}>
           <PortableText blocks={content} />
         </Box>
-        <Box mt={10}>
+        <Box mt={5}>
           <Typography variant="h1">{termsTitle}</Typography>
         </Box>
         <Box mt={5} className={classes.content}>
