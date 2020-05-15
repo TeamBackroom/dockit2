@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // import SanityMuxPlayer from 'sanity-mux-player';
 import ReactPlayer from 'react-player';
 import Dialog from '@material-ui/core/Dialog';
+import { RemoveScroll } from 'react-remove-scroll';
 import play from '../images/play.png';
 import anim from '../images/anim.gif';
 
@@ -167,21 +168,23 @@ function HeroSection({ heroSection }) {
           paper: classes.modalPaper,
         }}
       >
-        <ReactPlayer
-          url="https://vimeo.com/409067592"
-          playsinline
-          playing={showVideo}
-          controls
-          width={
-            dimensions.width > 700 ? dimensions.width * 0.8 : dimensions.width
-          }
-          height={
-            (dimensions.width > 700
-              ? dimensions.width * 0.8
-              : dimensions.width) * 0.5625
-          }
-          config={{}}
-        />
+        <RemoveScroll>
+          <ReactPlayer
+            url="https://vimeo.com/409067592"
+            playsinline
+            playing={showVideo}
+            controls
+            width={
+              dimensions.width > 700 ? dimensions.width * 0.8 : dimensions.width
+            }
+            height={
+              (dimensions.width > 700
+                ? dimensions.width * 0.8
+                : dimensions.width) * 0.5625
+            }
+            config={{}}
+          />
+        </RemoveScroll>
       </Dialog>
     </div>
   );
