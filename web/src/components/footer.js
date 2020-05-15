@@ -5,14 +5,29 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'gatsby';
 import PortableText from './portableText';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   logo: {
     width: 400,
     maxWidth: '100%',
   },
+  links: {
+    position: 'relative',
+    paddingTop: theme.spacing(5),
+    '&::before': {
+      content: '""',
+      display: 'block',
+      position: 'absolute',
+      top: 0,
+      width: 100,
+      backgroundColor: theme.palette.grey[400],
+      height: 1,
+      left: '50%',
+      marginLeft: -50,
+    },
+  },
   link: {
     fontSize: '1.2rem',
-    margin: '0 15px',
+    margin: '0 20px',
     textDecoration: 'none',
     color: '#598CB3',
   },
@@ -22,14 +37,18 @@ const useStyles = makeStyles({
       color: '#598CB3',
     },
   },
-});
+  sep: {
+    fontSize: 24,
+    color: theme.palette.text.primary,
+  },
+}));
 
 const Footer = props => {
   const { logo, footerText } = props;
   const classes = useStyles();
 
   return (
-    <footer>
+    <footer className={classes.root}>
       <Box textAlign="center" py={10}>
         {logo && logo.asset && (
           <img
@@ -38,10 +57,18 @@ const Footer = props => {
             className={classes.logo}
           />
         )}
-        <Box mt={8} mb={5}>
+        <Box
+          mt={8}
+          mb={5}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          className={classes.links}
+        >
           <Link className={classes.link} to="/terms">
             Terms &amp; Privacy
           </Link>
+          <span className={classes.sep}>|</span>
           <Link className={classes.link} to="/license">
             License
           </Link>
