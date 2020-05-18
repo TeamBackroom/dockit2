@@ -7,6 +7,7 @@ import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
 import PortableText from '../components/portableText';
+import TermsStatic from './terms_static';
 
 const useStyles = makeStyles({
   h2: {
@@ -57,7 +58,7 @@ const TermsPage = props => {
     title,
     seo,
     _rawContent: content,
-    termsTitle,
+    // termsTitle,
     _rawTermsContent: termsContent,
     policyTitle,
     _rawPolicyContent: policyContent,
@@ -86,10 +87,11 @@ const TermsPage = props => {
           <PortableText blocks={content} />
         </Box>
         <Box mt={5}>
-          <Typography variant="h1">{termsTitle}</Typography>
+          {/* <Typography variant="h1">{termsTitle}</Typography> */}
         </Box>
         <Box mt={5} className={classes.content}>
-          <PortableText blocks={termsContent} />
+          {/* <PortableText blocks={termsContent} /> */}
+          <TermsStatic />
         </Box>
         <Box mt={10}>
           <Typography variant="h1">{policyTitle}</Typography>

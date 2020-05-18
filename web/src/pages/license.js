@@ -7,6 +7,7 @@ import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
 import PortableText from '../components/portableText';
+import LicenseStatic from './license_static';
 
 const useStyles = makeStyles({
   h2: {
@@ -76,6 +77,9 @@ const LicensePage = props => {
         </Box>
         <Box mt={5} className={classes.content}>
           <PortableText blocks={content} />
+        </Box>
+        <Box mt={2} className={classes.content}>
+          <LicenseStatic />
         </Box>
       </Container>
     </Layout>
