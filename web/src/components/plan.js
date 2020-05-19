@@ -61,19 +61,20 @@ const useStyles = makeStyles(theme => ({
     },
   },
   commingSoon: {
-    backgroundColor: '#F15623',
-    position: 'absolute',
-    padding: '15px 40px 15px 30px',
-    top: -20,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    borderRadius: '0 50px 0 0',
-    whiteSpace: 'nowrap',
+    // backgroundColor: '#F15623',
+    // position: 'absolute',
+    // padding: '15px 40px 15px 30px',
+    // top: -20,
+    // left: '50%',
+    // transform: 'translateX(-50%)',
+    // borderRadius: '0 50px 0 0',
+    // whiteSpace: 'nowrap',
   },
   comingSoonText: {
-    color: theme.palette.common.white,
+    marginTop: theme.spacing(5),
+    color: '#F15623',
     textTransform: 'uppercase',
-    fontSize: '1.2rem',
+    fontSize: '2.5rem',
   },
 }));
 
@@ -119,13 +120,13 @@ function Plan({ plan }) {
               <PortableText blocks={subtitle} />
             </Typography>
           )}
-          {description && (
+          {/* {description && (
             <Box px={2}>
               <Typography variant="h5" className={classes.description}>
                 <PortableText blocks={description} />
               </Typography>
             </Box>
-          )}
+          )} */}
         </Box>
         {!comingSoon && annualPrice && (
           <>
