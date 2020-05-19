@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     lineHeight: 1,
     // color: theme.palette.text.primary,
     '& p': {
+      display: 'inline',
       marginTop: 0,
       marginBottom: 10,
     },
@@ -48,8 +49,10 @@ const useStyles = makeStyles(theme => ({
   },
   annualPrice: {
     zoom: '140%',
+    marginRight: theme.spacing(2),
   },
   annualPriceDescription: {
+    textAlign: 'left',
     color: '#2F3F4D',
     '& p': {
       margin: 0,
@@ -125,31 +128,39 @@ function Plan({ plan }) {
           )}
         </Box>
         {!comingSoon && annualPrice && (
-          <Box className={classes.planPrice}>
-            <Typography
-              variant="h1"
-              component="div"
-              className={classes.annualPrice}
+          <>
+            <Box
+              className={classes.planPrice}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
             >
-              ${annualPrice}
-            </Typography>
-            {annualPriceDescription && (
               <Typography
-                variant="h5"
+                variant="h1"
                 component="div"
-                gutterBottom
-                className={classes.annualPriceDescription}
+                className={classes.annualPrice}
               >
-                <PortableText blocks={annualPriceDescription} />
+                ${annualPrice}
               </Typography>
-            )}
-            <br />
-            {monthlyPriceDescription && (
-              <Typography variant="body1">
-                <PortableText blocks={monthlyPriceDescription} />
-              </Typography>
-            )}
-          </Box>
+              {annualPriceDescription && (
+                <Typography
+                  variant="h5"
+                  component="div"
+                  gutterBottom
+                  className={classes.annualPriceDescription}
+                >
+                  <PortableText blocks={annualPriceDescription} />
+                </Typography>
+              )}
+            </Box>
+            <Box>
+              {monthlyPriceDescription && (
+                <Typography variant="body1">
+                  <PortableText blocks={monthlyPriceDescription} />
+                </Typography>
+              )}
+            </Box>
+          </>
         )}
         {comingSoon && comingSoonText && (
           <Box className={classes.commingSoon}>
