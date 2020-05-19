@@ -5,7 +5,7 @@ export default function TermsStatic() {
   const terms = [
     {
       n: '1.1',
-      s: 'GENERAL',
+      s: 'GENERAL:',
       terms: [
         {
           n: '1.1.1',
@@ -54,7 +54,7 @@ export default function TermsStatic() {
     },
     {
       n: '1.2',
-      s: 'RESTRICTIONS',
+      s: 'RESTRICTIONS:',
       t: 'You agree that you will NOT use the Services to:',
       terms: [
         {
