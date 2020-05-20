@@ -44,13 +44,15 @@ function Feature({ feature, index }) {
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={12} lg={6}>
-          <img
-            src={feature.image.asset.fluid.src}
-            alt={feature.image.alt}
-            style={{ width: '100%' }}
-          />
-        </Grid>
+        {feature.image.asset && (
+          <Grid item xs={12} lg={6}>
+            <img
+              src={feature.image.asset.fluid.src}
+              alt={feature.image.alt}
+              style={{ width: '100%' }}
+            />
+          </Grid>
+        )}
       </Grid>
     </Box>
   );
