@@ -72,6 +72,7 @@ const useStyles = makeStyles(theme => ({
   },
   comingSoonText: {
     marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(5),
     color: '#F15623',
     textTransform: 'uppercase',
     fontSize: '2.5rem',
