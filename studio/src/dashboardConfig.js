@@ -12,16 +12,16 @@ export default {
                 'NOTE: Because these sites are static builds, they need to be re-deployed to see the changes when documents are published.',
               sites: [
                 {
-                  buildHookId: process.env.NETLIFY_STUDIO_BUILD_HOOK_ID,
+                  buildHookId: process.env.SANITY_STUDIO_NETLIFY_BUILD_HOOK_ID,
                   title: 'Content Management Studio',
                   name: 'needles-neos-studio',
-                  apiId: process.env.NETLIFY_STUDIO_API_ID,
+                  apiId: process.env.SANITY_STUDIO_NETLIFY_API_ID,
                 },
                 {
-                  buildHookId: process.env.NETLIFY_WEB_BUILD_HOOK_ID,
+                  buildHookId: process.env.SANITY_STUDIO_NETLIFY_WEB_BUILD_HOOK_ID,
                   title: 'Website',
                   name: 'needles-neos-web',
-                  apiId: process.env.NETLIFY_WEB_API_ID,
+                  apiId: process.env.SANITY_STUDIO_NETLIFY_WEB_API_ID,
                 },
               ],
             },
