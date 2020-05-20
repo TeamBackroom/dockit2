@@ -37,7 +37,7 @@ function Statement(props) {
       alignItems="center"
       className={classes.statement}
     >
-      {statement.image && (
+      {statement.image && statement.image.asset && (
         <Hidden mdDown>
           <Box mr={10}>
             <img
