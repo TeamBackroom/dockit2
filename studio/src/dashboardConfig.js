@@ -14,13 +14,13 @@ export default {
                 {
                   buildHookId: process.env.SANITY_STUDIO_NETLIFY_BUILD_HOOK_ID,
                   title: 'Content Management Studio',
-                  name: 'needles-neos-studio',
+                  name: process.env.SANITY_STUDIO_NETLIFY_STUDIO_SITE_NAME,
                   apiId: process.env.SANITY_STUDIO_NETLIFY_API_ID,
                 },
                 {
                   buildHookId: process.env.SANITY_STUDIO_NETLIFY_WEB_BUILD_HOOK_ID,
                   title: 'Website',
-                  name: 'needles-neos-web',
+                  name: process.env.SANITY_STUDIO_NETLIFY_WEB_SITE_NAME,
                   apiId: process.env.SANITY_STUDIO_NETLIFY_WEB_API_ID,
                 },
               ],
