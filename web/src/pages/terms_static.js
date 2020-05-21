@@ -667,8 +667,8 @@ export default function TermsStatic() {
 
   return (
     <>
-      {terms.map(l1 => (
-        <Box mt={5}>
+      {terms.map((l1, index) => (
+        <Box mt={index === 0 ? 0 : 5}>
           <strong>{`${l1.n} ${l1.s}`}</strong>
           {l1.t && <Box>{l1.t}</Box>}
           {l1.terms &&

@@ -89,9 +89,14 @@ const TermsPage = props => {
         <Box mt={5}>
           {/* <Typography variant="h1">{termsTitle}</Typography> */}
         </Box>
-        <Box mt={5} className={classes.content}>
+        <Box mt={5} className={classes.content} display="flex">
           {/* <PortableText blocks={termsContent} /> */}
-          <TermsStatic />
+          <Box>
+            <strong>1.</strong>
+          </Box>
+          <Box pl={4}>
+            <TermsStatic />
+          </Box>
         </Box>
         <Box mt={10}>
           <Typography variant="h1">{policyTitle}</Typography>
