@@ -66,6 +66,9 @@ const useStyles = makeStyles({
       color: '#2F3F4D',
       fontSize: '1rem',
       marginBottom: 10,
+      '&:first-child': {
+        marginTop: 0,
+      },
     },
     '& h4': {
       fontFamily: ['Rubik', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
@@ -112,14 +115,11 @@ const TermsPage = props => {
         </Box>
         <Box mt={5} className={classes.content} display="flex">
           <Box>
-            <strong>1.</strong>
+            <h3>1.</h3>
           </Box>
           <Box pl={4}>
             <PortableText blocks={termsContent} />
           </Box>
-        </Box>
-        <Box mt={10}>
-          <Typography variant="h1">{policyTitle}</Typography>
         </Box>
         <Box mt={5} className={classes.content}>
           <PortableText blocks={policyContent} />
