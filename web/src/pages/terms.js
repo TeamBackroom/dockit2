@@ -27,6 +27,33 @@ const useStyles = makeStyles({
     },
   },
   content: {
+    '& p': {
+      // marginTop: 0,
+      '& +h3': {
+        marginTop: 40,
+      }
+    },
+    '& ul': {
+      display: 'table',
+      listStyle: 'none',
+      marginBottom: 40,
+      '& ul': {
+        padding: 0,
+        marginBottom: 0,
+        width: '100%',
+      },
+    },
+    '& li': {
+      display: 'table-row',
+      paddingTop: 8,
+    },
+    '& code': {
+      display: 'table-cell',
+      paddingTop: 8,
+      paddingRight: 8,
+      fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+      fontSize: '0.875rem',
+    },
     '& h2': {
       fontFamily: ['Rubik', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       fontWeight: 600,
@@ -38,14 +65,14 @@ const useStyles = makeStyles({
       fontFamily: ['Rubik', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       fontWeight: 600,
       color: '#2F3F4D',
-      fontSize: '2rem',
+      fontSize: '1rem',
       marginBottom: 10,
     },
     '& h4': {
       fontFamily: ['Rubik', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       fontWeight: 600,
       color: '#2F3F4D',
-      fontSize: '1.5rem',
+      fontSize: '1rem',
       marginBottom: 10,
     },
   },
@@ -86,16 +113,12 @@ const TermsPage = props => {
         <Box mt={5} className={classes.content}>
           <PortableText blocks={content} />
         </Box>
-        <Box mt={5}>
-          {/* <Typography variant="h1">{termsTitle}</Typography> */}
-        </Box>
         <Box mt={5} className={classes.content} display="flex">
-          {/* <PortableText blocks={termsContent} /> */}
           <Box>
             <strong>1.</strong>
           </Box>
           <Box pl={4}>
-            <TermsStatic />
+            <PortableText blocks={termsContent} />
           </Box>
         </Box>
         <Box mt={10}>
