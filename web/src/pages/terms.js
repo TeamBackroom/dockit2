@@ -28,7 +28,6 @@ const useStyles = makeStyles({
   },
   content: {
     '& p': {
-      // marginTop: 0,
       '& +h3': {
         marginTop: 40,
       }
@@ -85,9 +84,7 @@ const TermsPage = props => {
     title,
     seo,
     _rawContent: content,
-    // termsTitle,
     _rawTermsContent: termsContent,
-    policyTitle,
     _rawPolicyContent: policyContent,
   } = data.page.nodes[0];
 
@@ -138,9 +135,7 @@ export const query = graphql`
       nodes {
         title
         _rawContent
-        termsTitle
         _rawTermsContent
-        policyTitle
         _rawPolicyContent
         seo {
           description

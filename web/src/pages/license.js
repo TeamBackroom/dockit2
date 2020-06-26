@@ -7,7 +7,6 @@ import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
 import PortableText from '../components/portableText';
-import LicenseStatic from './license_static';
 
 const useStyles = makeStyles({
   h2: {
