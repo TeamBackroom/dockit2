@@ -17,20 +17,10 @@ export default {
       of: [{ type: 'block' }],
     },
     {
-      title: 'Terms Title',
-      name: 'termsTitle',
-      type: 'string',
-    },
-    {
       title: 'Terms Content',
       name: 'termsContent',
       type: 'array',
       of: [{ type: 'block' }],
-    },
-    {
-      title: 'Policy Title',
-      name: 'policyTitle',
-      type: 'string',
     },
     {
       title: 'Policy Content',
