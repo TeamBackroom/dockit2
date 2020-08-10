@@ -28,16 +28,16 @@ function Testimonial({ testimonial }) {
             <img
               src={testimonial.image.asset.fluid.src}
               alt={testimonial.image.alt}
-              style={{ width: '100%' }}
+              style={{ width: '100%', maxWidth: 150, marginBottom: 15 }}
             />
           )}
-          <Typography variant="body1">{testimonial.text}</Typography>
-          <Typography variant="h2" className={classes.h2}>
-            {testimonial.name}
+          <Typography variant="body1" style={{ marginBottom: 30 }}>
+            {testimonial.text}
           </Typography>
-          <Typography variant="h2" className={classes.h2}>
-            {testimonial.title}
+          <Typography variant="subtitle1">
+            <strong>{testimonial.name}</strong>
           </Typography>
+          {testimonial.title}
         </Box>
       </Box>
     </Grid>
