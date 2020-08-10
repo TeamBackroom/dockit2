@@ -15,6 +15,11 @@ export default {
       type: 'heroSection',
     },
     {
+      title: 'Testimonials Section',
+      name: 'testimonialsSection',
+      type: 'testimonialsSection',
+    },
+    {
       title: 'Features Section',
       name: 'featuresSection',
       type: 'featuresSection',

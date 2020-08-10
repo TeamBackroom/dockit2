@@ -11,6 +11,7 @@ import {
   MdSettingsInputComponent,
   MdInsertDriveFile,
   MdAttachMoney,
+  MdThumbUp,
 } from 'react-icons/lib/md';
 import IframePreview from '../previews/IframePreview';
 
@@ -110,7 +111,7 @@ export default () =>
             .id('licensePage')
             .schemaType('licensePage')
             .documentId('licensePage'),
-      ),
+        ),
       S.divider(),
       S.listItem()
         .title('Features')
@@ -137,6 +138,11 @@ export default () =>
         .icon(MdAttachMoney)
         .schemaType('plan')
         .child(S.documentTypeList('plan').title('Plans')),
+      S.listItem()
+        .title('Testimonials')
+        .icon(MdThumbUp)
+        .schemaType('testimonial')
+        .child(S.documentTypeList('testimonial').title('Testimonials')),
       S.divider(),
       S.listItem()
         .title('Blog posts')
@@ -160,20 +166,22 @@ export default () =>
       ...S.documentTypeListItems().filter(
         listItem =>
           ![
-            'category',
             'author',
-            'post',
-            'siteSettings',
-            'landingPage',
-            'pricingPage',
-            'termsPage',
-            'licensePage',
-            'feature',
+            'category',
             'cta',
-            'solution',
-            'statement',
+            'feature',
+            'landingPage',
+            'licensePage',
             'nav',
             'plan',
+            'post',
+            'pricingPage',
+            'siteSettings',
+            'solution',
+            'statement',
+            'termsPage',
+            'testimonial',
+            'video',
           ].includes(listItem.getId()),
       ),
     ]);

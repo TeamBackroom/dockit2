@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import { Container, Box, Typography, Button, Link } from '@material-ui/core';
+import {
+  Container,
+  Box,
+  Typography,
+  Button,
+  Link,
+  Grid,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import HubspotForm from 'react-hubspot-form';
 import GraphQLErrorList from '../components/graphql-error-list';
@@ -11,6 +18,7 @@ import HeroSection from '../components/hero';
 import Feature from '../components/feature';
 import Solutions from '../components/solutions';
 import Statement from '../components/statement';
+import Testimonial from '../components/testimonial';
 
 const useStyles = makeStyles({
   h2: {
@@ -48,6 +56,7 @@ const IndexPage = props => {
     title,
     seo,
     heroSection,
+    testimonialsSection,
     featuresSection,
     solutions,
     screenshot,
@@ -72,8 +81,30 @@ const IndexPage = props => {
       />
       {/* hero */}
       <HeroSection heroSection={heroSection} />
+      {/* testimonials */}
+      {testimonialsSection && testimonialsSection.testimonials.length > 0 && (
+        <Box py={5} bgcolor="#43515e" color="white" id="testimonials">
+          <Container>
+            <Box mb={5} textAlign="center">
+              <Typography
+                variant="h1"
+                component="h2"
+                gutterBottom
+                style={{ color: '#FFF' }}
+              >
+                {testimonialsSection.title}
+              </Typography>
+            </Box>
+            <Grid container spacing={10} justify="space-between">
+              {testimonialsSection.testimonials.map(testimonial => (
+                <Testimonial testimonial={testimonial} key={testimonial.id} />
+              ))}
+            </Grid>
+          </Container>
+        </Box>
+      )}
       {/* features */}
-      <Box py={5} bgcolor="#f6f7fb" id="features">
+      <Box pt={10} pb={5} bgcolor="#f6f7fb" id="features">
         <Container fixed>
           <Box mb={5} textAlign="center">
             <Typography
@@ -184,6 +215,24 @@ export const query = graphql`
           cta {
             label
             url
+          }
+        }
+        testimonialsSection {
+          title
+          testimonials {
+            id
+            title
+            name
+            text
+            image {
+              caption
+              alt
+              asset {
+                fluid {
+                  src
+                }
+              }
+            }
           }
         }
         featuresSection {

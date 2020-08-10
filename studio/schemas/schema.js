@@ -7,32 +7,34 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 // document schemas
 import author from './documents/author';
 import category from './documents/category';
-import post from './documents/post';
-import siteSettings from './documents/siteSettings';
-import landingPage from './documents/landingPage';
-import pricingPage from './documents/pricingPage';
-import termsPage from './documents/termsPage';
-import licensePage from './documents/licensePage';
-import feature from './documents/feature';
 import cta from './documents/cta';
-import solution from './documents/solution';
-import statement from './documents/statement';
+import feature from './documents/feature';
+import landingPage from './documents/landingPage';
+import licensePage from './documents/licensePage';
 import nav from './documents/nav';
 import plan from './documents/plan';
+import post from './documents/post';
+import pricingPage from './documents/pricingPage';
+import siteSettings from './documents/siteSettings';
+import solution from './documents/solution';
+import statement from './documents/statement';
+import termsPage from './documents/termsPage';
+import testimonial from './documents/testimonial';
 import video from './documents/video';
 
 // Object types
-import bodyPortableText from './objects/bodyPortableText';
-import bioPortableText from './objects/bioPortableText';
-import excerptPortableText from './objects/excerptPortableText';
-import mainImage from './objects/mainImage';
 import authorReference from './objects/authorReference';
-import navItem from './objects/navItem';
-import heroSection from './objects/heroSection';
-import heroSimple from './objects/heroSimple';
+import bioPortableText from './objects/bioPortableText';
+import bodyPortableText from './objects/bodyPortableText';
+import excerptPortableText from './objects/excerptPortableText';
 import featuresSection from './objects/featuresSection';
 import formSection from './objects/formSection';
+import heroSection from './objects/heroSection';
+import heroSimple from './objects/heroSimple';
+import mainImage from './objects/mainImage';
+import navItem from './objects/navItem';
 import seo from './objects/seo';
+import testimonialsSection from './objects/testimonialsSection';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -43,31 +45,33 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
-    feature,
-    cta,
-    solution,
-    statement,
-    nav,
-    plan,
-    landingPage,
-    pricingPage,
-    termsPage,
-    licensePage,
-    siteSettings,
-    post,
-    category,
     author,
-    mainImage,
     authorReference,
-    bodyPortableText,
     bioPortableText,
+    bodyPortableText,
+    category,
+    cta,
     excerptPortableText,
-    navItem,
-    heroSection,
-    heroSimple,
+    feature,
     featuresSection,
     formSection,
+    heroSection,
+    heroSimple,
+    landingPage,
+    licensePage,
+    mainImage,
+    nav,
+    navItem,
+    plan,
+    post,
+    pricingPage,
     seo,
+    siteSettings,
+    solution,
+    statement,
+    termsPage,
+    testimonial,
+    testimonialsSection,
     video,
 
     // When added to this list, object types can be used as
