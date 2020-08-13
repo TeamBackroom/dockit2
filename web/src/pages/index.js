@@ -217,6 +217,15 @@ export const query = graphql`
             title
             name
             text
+            image {
+              caption
+              asset {
+                fluid {
+                  src
+                }
+              }
+              alt
+            }
           }
         }
         featuresSection {

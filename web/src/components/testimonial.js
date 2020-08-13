@@ -17,8 +17,16 @@ function Testimonial({ testimonial }) {
     <Box p={5} width="100%">
       <Grid container spacing={5}>
         <Grid item xs={12} lg={4}>
-          <Box textAlign={{ xs: 'center', lg: 'auto' }}>
-            <Typography variant="h3">{testimonial.title}</Typography>
+          <Box textAlign="center">
+            {testimonial.image && testimonial.image.asset ? (
+              <img
+                src={testimonial.image.asset.fluid.src}
+                alt={testimonial.image.alt}
+                style={{ width: '100%', maxWidth: 160 }}
+              />
+            ) : (
+              <Typography variant="h3">{testimonial.title}</Typography>
+            )}
           </Box>
         </Grid>
         <Grid item xs={12} lg={8}>
