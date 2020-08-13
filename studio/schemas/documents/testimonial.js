@@ -3,11 +3,11 @@ export default {
   type: 'document',
   title: 'Testimonial',
   fields: [
-    {
-      name: 'image',
-      type: 'mainImage',
-      title: 'Image',
-    },
+    // {
+    //   name: 'image',
+    //   type: 'mainImage',
+    //   title: 'Image',
+    // },
     {
       name: 'text',
       type: 'text',

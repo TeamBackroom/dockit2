@@ -18,7 +18,7 @@ import HeroSection from '../components/hero';
 import Feature from '../components/feature';
 import Solutions from '../components/solutions';
 import Statement from '../components/statement';
-import Testimonial from '../components/testimonial';
+import TestimonialsCarousel from '../components/testimonials-carousel';
 
 const useStyles = makeStyles({
   h2: {
@@ -83,28 +83,21 @@ const IndexPage = props => {
       <HeroSection heroSection={heroSection} />
       {/* testimonials */}
       {testimonialsSection && testimonialsSection.testimonials.length > 0 && (
-        <Box py={5} bgcolor="#43515e" color="white" id="testimonials">
+        <Box py={5} id="testimonials" position="relative" zIndex={10}>
           <Container>
-            <Box mb={5} textAlign="center">
-              <Typography
-                variant="h1"
-                component="h2"
-                gutterBottom
-                style={{ color: '#FFF' }}
-              >
+            <Box mb={6} textAlign="center">
+              <Typography variant="h1" component="h2" gutterBottom>
                 {testimonialsSection.title}
               </Typography>
             </Box>
-            <Grid container spacing={10} justify="space-between">
-              {testimonialsSection.testimonials.map(testimonial => (
-                <Testimonial testimonial={testimonial} key={testimonial.id} />
-              ))}
-            </Grid>
+            <TestimonialsCarousel
+              testimonials={testimonialsSection.testimonials}
+            />
           </Container>
         </Box>
       )}
       {/* features */}
-      <Box pt={10} pb={5} bgcolor="#f6f7fb" id="features">
+      <Box pt={25} pb={5} mt={-15} bgcolor="#f6f7fb" id="features">
         <Container fixed>
           <Box mb={5} textAlign="center">
             <Typography
@@ -224,15 +217,6 @@ export const query = graphql`
             title
             name
             text
-            image {
-              caption
-              alt
-              asset {
-                fluid {
-                  src
-                }
-              }
-            }
           }
         }
         featuresSection {
