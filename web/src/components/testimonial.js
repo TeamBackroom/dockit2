@@ -25,10 +25,13 @@ function Testimonial({ testimonial }) {
           <Box display="flex" alignItems="center" justifyContent="center">
             <Box textAlign={{ xs: 'center', lg: 'auto' }}>
               <Typography variant="body1" style={{ marginBottom: 20 }}>
-                {testimonial.text}
+                "{testimonial.text}"
               </Typography>
               <Typography variant="subtitle1">
-                <Box marginRight={{ xs: 0, lg: 10 }}>
+                <Box
+                  marginRight={{ xs: 0, lg: 2 }}
+                  display={{ xs: 'block', lg: 'inline' }}
+                >
                   <strong>{testimonial.name}</strong>
                 </Box>
                 {testimonial.title}
