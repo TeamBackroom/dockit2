@@ -14,10 +14,10 @@ function Testimonial({ testimonial }) {
   const classes = useStyles();
 
   return (
-    <Box p={5} width="100%">
-      <Grid container spacing={5}>
+    <Box height="100%" display="flex" alignItems="center">
+      <Grid container spacing={0}>
         <Grid item xs={12} lg={4}>
-          <Box textAlign="center">
+          <Box display="flex" justifyContent="center">
             {testimonial.image && testimonial.image.asset ? (
               <img
                 src={testimonial.image.asset.fluid.src}
@@ -25,12 +25,20 @@ function Testimonial({ testimonial }) {
                 style={{ width: '100%', maxWidth: 160 }}
               />
             ) : (
-              <Typography variant="h3">{testimonial.title}</Typography>
+              <Box py={2}>
+                <Typography variant="h3">{testimonial.title}</Typography>
+              </Box>
             )}
           </Box>
         </Grid>
         <Grid item xs={12} lg={8}>
-          <Box display="flex" alignItems="center" justifyContent="center">
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            height="100%"
+            p={2}
+          >
             <Box textAlign={{ xs: 'center', lg: 'auto' }}>
               <Typography variant="body1" style={{ marginBottom: 20 }}>
                 "{testimonial.text}"

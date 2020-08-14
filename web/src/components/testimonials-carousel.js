@@ -12,6 +12,8 @@ import Testimonial from './testimonial';
 
 const useStyles = makeStyles(theme => ({
   btn: {
+    padding: 0,
+    minWidth: 0,
     '&:hover': {
       background: 'none',
     },
@@ -37,21 +39,24 @@ function TestimonialsCarousel({ testimonials }) {
   };
 
   return (
-    <Grid container spacing={5} alignItems="center" justify="center">
-      <Grid item xs={2} md={1} style={{ textAlign: 'center' }}>
-        <Button
-          onClick={handleBack}
-          disabled={activeStep === 0}
-          style={{ opacity: activeStep === 0 ? 0.2 : 1 }}
-          className={classes.btn}
-        >
-          <img src={ArrowLeft} alt="arrow left" />
-        </Button>
+    <Grid container spacing={0} alignItems="center" justify="center">
+      <Grid item xs={1} style={{ padding: 0 }}>
+        <Box maxWidth={{ xs: 15, md: 30 }} mr="auto" ml={{ xs: 0, md: 'auto' }}>
+          <Button
+            onClick={handleBack}
+            disabled={activeStep === 0}
+            style={{ opacity: activeStep === 0 ? 0.2 : 1 }}
+            className={classes.btn}
+            fullWidth
+          >
+            <img src={ArrowLeft} alt="arrow left" style={{ width: '100%' }} />
+          </Button>
+        </Box>
       </Grid>
-      <Grid item xs={8} md={10}>
+      <Grid item xs={10}>
         <Box boxShadow="0 0 30px #CCC" bgcolor="white">
           <SwipeableViews
-            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+            axis="x"
             index={activeStep}
             onChangeIndex={handleStepChange}
             enableMouseEvents
@@ -66,15 +71,18 @@ function TestimonialsCarousel({ testimonials }) {
           </SwipeableViews>
         </Box>
       </Grid>
-      <Grid item xs={2} md={1} style={{ textAlign: 'center' }}>
-        <Button
-          onClick={handleNext}
-          disabled={activeStep === maxSteps - 1}
-          style={{ opacity: activeStep === maxSteps - 1 ? 0.2 : 1 }}
-          className={classes.btn}
-        >
-          <img src={ArrowRight} alt="arrow right" />
-        </Button>
+      <Grid item xs={1} style={{ padding: 0 }}>
+        <Box maxWidth={{ xs: 15, md: 30 }} ml="auto" mr={{ xs: 0, md: 'auto' }}>
+          <Button
+            onClick={handleNext}
+            disabled={activeStep === maxSteps - 1}
+            style={{ opacity: activeStep === maxSteps - 1 ? 0.2 : 1 }}
+            className={classes.btn}
+            fullWidth
+          >
+            <img src={ArrowRight} alt="arrow right" style={{ width: '100%' }} />
+          </Button>
+        </Box>
       </Grid>
     </Grid>
   );
