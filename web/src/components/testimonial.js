@@ -13,11 +13,13 @@ function Testimonial({ testimonial }) {
         <Grid item xs={12} lg={4}>
           <Box display="flex" justifyContent="center">
             {testimonial.image && testimonial.image.asset ? (
-              <img
-                src={testimonial.image.asset.fluid.src}
-                alt={testimonial.image.alt}
-                style={{ maxWidth: 160 }}
-              />
+              <div>
+                <img
+                  src={testimonial.image.asset.fluid.src}
+                  alt={testimonial.image.alt}
+                  style={{ maxWidth: 160 }}
+                />
+              </div>
             ) : (
               <Box py={2}>
                 <Typography variant="h3">{testimonial.title}</Typography>
