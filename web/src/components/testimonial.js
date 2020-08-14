@@ -1,17 +1,11 @@
 import React from 'react';
-import { Grid, Box, Typography, Paper } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Box, Typography } from '@material-ui/core';
+// import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
-  h2: {
-    position: 'relative',
-    paddingBottom: 20,
-    marginBottom: 20,
-  },
-});
+// const useStyles = makeStyles({});
 
 function Testimonial({ testimonial }) {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
     <Box height="100%" display="flex" alignItems="center">
@@ -22,7 +16,7 @@ function Testimonial({ testimonial }) {
               <img
                 src={testimonial.image.asset.fluid.src}
                 alt={testimonial.image.alt}
-                style={{ width: '100%', maxWidth: 160 }}
+                style={{ maxWidth: 160 }}
               />
             ) : (
               <Box py={2}>

@@ -85,7 +85,7 @@ function Plan({ plan }) {
     id,
     _rawTitle: title,
     _rawSubtitle: subtitle,
-    _rawDescription: description,
+    // _rawDescription: description,
     _rawAnnualPriceDescription: annualPriceDescription,
     _rawMonthlyPriceDescription: monthlyPriceDescription,
     annualPrice,

@@ -1,14 +1,10 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import MobileStepper from '@material-ui/core/MobileStepper';
-import { Grid, Typography, Button, Box } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Button, Box } from '@material-ui/core';
 import ArrowLeft from '../images/arrow-left.svg';
 import ArrowRight from '../images/arrow-right.svg';
 import SwipeableViews from 'react-swipeable-views';
-// import { autoPlay } from 'react-swipeable-views-utils';
 import Testimonial from './testimonial';
-
-// const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const useStyles = makeStyles(theme => ({
   btn: {
@@ -22,7 +18,6 @@ const useStyles = makeStyles(theme => ({
 
 function TestimonialsCarousel({ testimonials }) {
   const classes = useStyles();
-  const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = testimonials.length;
 
@@ -62,11 +57,11 @@ function TestimonialsCarousel({ testimonials }) {
             enableMouseEvents
           >
             {testimonials.map((step, index) => (
-              <>
+              <React.Fragment key={step.id}>
                 {Math.abs(activeStep - index) <= 2 ? (
-                  <Testimonial testimonial={step} key={step.id} />
+                  <Testimonial testimonial={step} />
                 ) : null}
-              </>
+              </React.Fragment>
             ))}
           </SwipeableViews>
         </Box>

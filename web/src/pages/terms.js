@@ -7,7 +7,6 @@ import GraphQLErrorList from '../components/graphql-error-list';
 import SEO from '../components/seo';
 import Layout from '../containers/layout';
 import PortableText from '../components/portableText';
-import TermsStatic from './terms_static';
 
 const useStyles = makeStyles({
   h2: {
@@ -30,7 +29,7 @@ const useStyles = makeStyles({
     '& p': {
       '& +h3': {
         marginTop: 40,
-      }
+      },
     },
     '& ul': {
       display: 'table',

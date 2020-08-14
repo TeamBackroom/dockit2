@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import {
-  Container,
-  Box,
-  Typography,
-  Button,
-  Link,
-  Grid,
-} from '@material-ui/core';
+import { Container, Box, Typography, Button, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import HubspotForm from 'react-hubspot-form';
 import GraphQLErrorList from '../components/graphql-error-list';
