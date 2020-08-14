@@ -97,7 +97,7 @@ const IndexPage = props => {
         </Box>
       )}
       {/* features */}
-      <Box pt={25} pb={5} mt={-15} bgcolor="#f6f7fb" id="features">
+      <Box pt={18} pb={5} mt={-11} bgcolor="#f6f7fb" id="features">
         <Container fixed>
           <Box mb={5} textAlign="center">
             <Typography
